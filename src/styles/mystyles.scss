@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+@import './typography';
+@import './colors';
+@import './global';
+
+@import "~bulma/bulma.sass";
+
+body {
+    width: 100vw;
+}
+
+#gatsby-focus-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 50%;
+    position: fixed;
+}
+
+h1 {
+    font-size: $font-xxxl;
+    
+    &.blue {
+        color: $blue;
+    }
+}
+
+main {
+    grid-column-start: 2;
+}
+
+section {
+    height: 100vh;
+}
+
+.about {
+    background-color: $blue;
+}
+
+.projects {
+    background-color: $green;
+}

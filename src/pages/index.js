@@ -1,15 +1,21 @@
-import React from "react"
-import './mystyles.scss'
-import SEO from "../components/seo"
+import React from 'react'
+import '../styles/mystyles.scss'
+import SEO from '../components/seo'
+import Info from '../components/Info'
+import Home from '../components/Home'
+import Projects from '../components/Projects'
 
-const Homepage = () => (
-  <>
-    <SEO title="Kristine Codes - Homepage" />
-    <h1 className='blue'>kristine codes</h1>
-    <footer>
-      © {new Date().getFullYear()}
-    </footer>
-  </>
-)
+const App = () => {
+  return (
+    <>
+      <SEO title="Kristine Codes - Homepage" />
+      <Info />
+      <main>
+          <Home />
+          <Projects />
+      </main>
+    </>
+  )
+}
 
-export default Homepage
+export default App
