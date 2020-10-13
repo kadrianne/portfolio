@@ -47,7 +47,6 @@ footer {
 }
 
 .about {
-  background-color: $blue;
   color: $beige-lighter;
 }
 
@@ -58,9 +57,5 @@ main {
 }
 
 section {
-  height: 100vh;
-}
-
-.projects {
-  background-color: $green;
+  min-height: 100vh;
 }
