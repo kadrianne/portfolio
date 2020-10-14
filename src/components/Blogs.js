@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import calculateColorValue from '../helpers/calculateColorValue'
 
-const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
+const Blogs = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
 
   const [height, setHeight] = useState(0)
   const [startingPosition, setStartingPosition] = useState(0)
@@ -18,19 +18,19 @@ const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
   }
 
   useEffect(() => {
-    const project = document.querySelector('.projects')
-    setHeight(project.clientHeight)
-    setStartingPosition(project.offsetTop)
+    const blogs = document.querySelector('.blogs')
+    setHeight(blogs.clientHeight)
+    setStartingPosition(blogs.offsetTop)
   }, [])
 
   return (
     <>
     {window.addEventListener('scroll', handleScroll)}
-    <section className='projects'>
-        <h2>Projects</h2>
+    <section className='blogs'>
+        <h2>Blogs</h2>
     </section>
     </>
   )
 }
 
-export default Projects
+export default Blogs
