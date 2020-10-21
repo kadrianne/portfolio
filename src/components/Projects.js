@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import calculateColorValue from '../helpers/calculateColorValue'
 
-const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
+const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor, addHeight }) => {
 
   const [height, setHeight] = useState(0)
   const [startingPosition, setStartingPosition] = useState(0)
@@ -19,6 +19,7 @@ const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
 
   useEffect(() => {
     const project = document.querySelector('.projects')
+    addHeight((prevState) => ({ ...prevState, projects: project.clientHeight }))
     setHeight(project.clientHeight)
     setStartingPosition(project.offsetTop)
   }, [])
@@ -28,6 +29,7 @@ const Projects = ({ setRed, setGreen, setBlue, startingColor, finalColor }) => {
     {window.addEventListener('scroll', handleScroll)}
     <section className='projects'>
         <h2>Projects</h2>
+        <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
     </section>
     </>
   )
