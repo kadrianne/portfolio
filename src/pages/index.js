@@ -12,7 +12,7 @@ const componentColors = {
   about: [85, 110, 139],
   projects: [123, 153, 163],
   blogs: [203, 179, 191],
-  contact: [247, 202, 207]
+  contact: [247, 208, 178]
 }
 
 const texts = {
@@ -22,39 +22,59 @@ const texts = {
   contact: 'connects'
 }
 
-const startingHeights = {
-  about: window.innerHeight,
-  projects: window.innerHeight,
-  blogs: window.innerHeight,
-  contact: window.innerHeight
-}
-
 const App = () => {
 
   const [page, setPage] = useState('about')
-  const [heights, addHeight] = useState(startingHeights)
-  const [startingColor, setStartingColor] = useState(componentColors.about)
-  const [finalColor, setFinalColor] = useState(componentColors.projects)
-  
-  const [ startingRed, startingGreen, startingBlue ] = startingColor
-  const [ finalRed, finalGreen, finalBlue ] = finalColor
+  const [heights, addHeight] = useState({})
+  const [currentComponent, setCurrentComponent] = useState(page)
+  // const [startingColor, setStartingColor] = useState(componentColors.about)
+  // const [finalColor, setFinalColor] = useState(componentColors.projects)
+  const [ startingRed, startingGreen, startingBlue ] = componentColors.about
 
   const [red, setRed] = useState(startingRed)
   const [green, setGreen] = useState(startingGreen)
   const [blue, setBlue] = useState(startingBlue)
 
-  useEffect(() => {
-    console.log(window.scrollY)
-    const handleScroll = () => {
-      setRed(calculateColorValue(heights.about, startingRed, finalRed))
-      setGreen(calculateColorValue(heights.about, startingGreen, finalGreen))
-      setBlue(calculateColorValue(heights.about, startingBlue, finalBlue))
+  const setRGB = (startingComponent, endingComponent) => {
+    const [ startingRed, startingGreen, startingBlue ] = componentColors[startingComponent]
+    const [ finalRed, finalGreen, finalBlue ] = componentColors[endingComponent]
+
+    const { height, startY } = heights[startingComponent]
+
+    setRed(calculateColorValue(height, startingRed, finalRed, startY))
+    setGreen(calculateColorValue(height, startingGreen, finalGreen, startY))
+    setBlue(calculateColorValue(height, startingBlue, finalBlue, startY))
   }
 
-    window.addEventListener('scroll', handleScroll)
-  }, [])
+  const handleScroll = () => {
+    const { about, projects, blogs, contact } = heights
 
-  console.log(heights)
+    if (window.scrollY < about.endY) {
+      setCurrentComponent('about')
+      setRGB('about', 'projects')
+    } else if (window.scrollY >= about.endY && window.scrollY < projects.endY){
+      console.log('projects')
+      setCurrentComponent('projects')
+      setRGB('projects', 'blogs')
+    } else {
+      setCurrentComponent('blogs')
+      setRGB('blogs', 'contact')
+    }
+  }
+
+  useEffect(() => {
+    if (heights.about) {
+      window.addEventListener('scroll', handleScroll)
+    }
+
+  }, [heights])
+
+  // useEffect(() => {
+  //   if (heights.about) {
+  //     setRGB()
+  //   }
+  // }, [currentComponent])
+  
   return (
     <>
       <SEO title="kristine codes - homepage" />
@@ -62,19 +82,20 @@ const App = () => {
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
           <About addHeight={addHeight} />
           <Projects
-            startingColor={componentColors['projects']} 
-            finalColor={componentColors['blogs']}
-            setRed={setRed}
-            setGreen={setGreen}
-            setBlue={setBlue}
+            // startingColor={componentColors['projects']} 
+            // finalColor={componentColors['blogs']}
+            // setRed={setRed}
+            // setGreen={setGreen}
+            // setBlue={setBlue}
             addHeight={addHeight}
           />
           <Blogs
-            startingColor={componentColors['blogs']} 
-            finalColor={componentColors['contact']}
-            setRed={setRed}
-            setGreen={setGreen}
-            setBlue={setBlue}
+            // startingColor={componentColors['blogs']} 
+            // finalColor={componentColors['contact']}
+            // setRed={setRed}
+            // setGreen={setGreen}
+            // setBlue={setBlue}
+            addHeight={addHeight}
           />
           <Contact />
       </main>

@@ -3,8 +3,15 @@ import React, { useState, useEffect } from 'react'
 const About = ({ addHeight }) => {
 
   useEffect(() => {
-    const height = document.querySelector('.about').clientHeight
-    addHeight((prevState) => ({ ...prevState, about: height }))
+    const about = document.querySelector('.about')
+    addHeight((prevState) => ({ ...prevState,
+        about: {
+          startY: 0, 
+          height: about.clientHeight,
+          endY: about.clientHeight
+        }
+      })
+    )
   }, [])
 
   return (
