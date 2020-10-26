@@ -9,10 +9,11 @@ import Contact from '../components/Contact'
 import calculateColorValue from '../helpers/calculateColorValue'
 
 const componentColors = {
-  about: [85, 110, 139],
-  projects: [123, 153, 163],
-  blogs: [203, 179, 191],
-  contact: [247, 208, 178]
+  about: [118, 167, 167],
+  projects: [19, 113, 170],
+  blogs: [202, 175, 212],
+  contact: [247, 214, 173],
+  pageEnd: [237, 213, 191]
 }
 
 const texts = {
@@ -26,9 +27,6 @@ const App = () => {
 
   const [page, setPage] = useState('about')
   const [heights, addHeight] = useState({})
-  const [currentComponent, setCurrentComponent] = useState(page)
-  // const [startingColor, setStartingColor] = useState(componentColors.about)
-  // const [finalColor, setFinalColor] = useState(componentColors.projects)
   const [ startingRed, startingGreen, startingBlue ] = componentColors.about
 
   const [red, setRed] = useState(startingRed)
@@ -38,7 +36,6 @@ const App = () => {
   const setRGB = (startingComponent, endingComponent) => {
     const [ startingRed, startingGreen, startingBlue ] = componentColors[startingComponent]
     const [ finalRed, finalGreen, finalBlue ] = componentColors[endingComponent]
-
     const { height, startY } = heights[startingComponent]
 
     setRed(calculateColorValue(height, startingRed, finalRed, startY))
@@ -46,58 +43,56 @@ const App = () => {
     setBlue(calculateColorValue(height, startingBlue, finalBlue, startY))
   }
 
-  const handleScroll = () => {
-    const { about, projects, blogs, contact } = heights
+  const handleColors = () => {
+    const { about, projects, blogs } = heights
 
     if (window.scrollY < about.endY) {
-      setCurrentComponent('about')
       setRGB('about', 'projects')
     } else if (window.scrollY >= about.endY && window.scrollY < projects.endY){
-      console.log('projects')
-      setCurrentComponent('projects')
       setRGB('projects', 'blogs')
-    } else {
-      setCurrentComponent('blogs')
+    } else if (window.scrollY >= projects.endY && window.scrollY < blogs.endY){
       setRGB('blogs', 'contact')
+    } else {
+      setRGB('contact', 'pageEnd')
     }
+  }
+
+  const handleText = () => {
+    const { about, projects, blogs } = heights
+
+    const halfHeight = (component) => component.endY - (component.height/2)
+
+    if (window.scrollY < halfHeight(about)) {
+      setPage('about')
+    } else if (window.scrollY >= halfHeight(about) && window.scrollY < halfHeight(projects)){
+      setPage('projects')
+    } else if (window.scrollY >= halfHeight(projects) && window.scrollY < halfHeight(blogs)){
+      setPage('blogs')
+    } else {
+      setPage('contact')
+    }
+  }
+
+  const handleScroll = () => {
+    handleColors()
+    handleText()
   }
 
   useEffect(() => {
     if (heights.about) {
       window.addEventListener('scroll', handleScroll)
     }
-
   }, [heights])
 
-  // useEffect(() => {
-  //   if (heights.about) {
-  //     setRGB()
-  //   }
-  // }, [currentComponent])
-  
   return (
     <>
       <SEO title="kristine codes - homepage" />
-      <Info text={texts[page]} setPage={setPage} />
+      <Info text={texts[page]} page={page} setPage={setPage} />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
           <About addHeight={addHeight} />
-          <Projects
-            // startingColor={componentColors['projects']} 
-            // finalColor={componentColors['blogs']}
-            // setRed={setRed}
-            // setGreen={setGreen}
-            // setBlue={setBlue}
-            addHeight={addHeight}
-          />
-          <Blogs
-            // startingColor={componentColors['blogs']} 
-            // finalColor={componentColors['contact']}
-            // setRed={setRed}
-            // setGreen={setGreen}
-            // setBlue={setBlue}
-            addHeight={addHeight}
-          />
-          <Contact />
+          <Projects addHeight={addHeight} />
+          <Blogs addHeight={addHeight} />
+          <Contact addHeight={addHeight} />
       </main>
     </>
   )
