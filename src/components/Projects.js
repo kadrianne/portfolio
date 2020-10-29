@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 
-const Projects = ({ addHeight }) => {
+const Projects = ({ addHeight, projectsRef }) => {
 
   useEffect(() => {
-    const project = document.querySelector('.projects')
     addHeight((prevState) => ({ ...prevState, 
         projects: {
           startY: prevState.about.endY, 
-          height: project.clientHeight,
-          endY: prevState.about.endY + project.clientHeight
+          height: projectsRef.current.clientHeight,
+          endY: prevState.about.endY + projectsRef.current.clientHeight
         }
       })
     )
@@ -16,7 +15,7 @@ const Projects = ({ addHeight }) => {
 
   return (
     <>
-    <section id='#projects' className='projects'>
+    <section ref={projectsRef} className='projects'>
         <h2>projects</h2>
         <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
     </section>

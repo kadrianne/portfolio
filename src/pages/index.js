@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React, { useEffect, useState, useRef } from 'react'
 
 import '../styles/mystyles.scss'
 
@@ -10,7 +9,6 @@ import Projects from '../components/Projects'
 import Blogs from '../components/Blogs'
 import Contact from '../components/Contact'
 
-import ScrollHandler from '../helpers/scrollHandler'
 import calculateColorValue from '../helpers/calculateColorValue'
 
 const componentColors = {
@@ -32,31 +30,43 @@ const App = ({ location }) => {
   const [green, setGreen] = useState(startingGreen)
   const [blue, setBlue] = useState(startingBlue)
 
-  const setRGB = (startingComponent, endingComponent) => {
+  const aboutRef = useRef(null)
+  const projectsRef = useRef(null)
+  const blogsRef = useRef(null)
+  const contactRef = useRef(null)
+
+  function setRGB(startingComponent, endingComponent) {
+    const { height, startY } = heights[startingComponent]
     const [ startingRed, startingGreen, startingBlue ] = componentColors[startingComponent]
     const [ finalRed, finalGreen, finalBlue ] = componentColors[endingComponent]
-    const { height, startY } = heights[startingComponent]
 
-    setRed(calculateColorValue(height, startingRed, finalRed, startY))
-    setGreen(calculateColorValue(height, startingGreen, finalGreen, startY))
-    setBlue(calculateColorValue(height, startingBlue, finalBlue, startY))
+    const colorArguments = (startingColor, finalColor) => ({ height, startY, startingColor, finalColor })
+
+    setRed(calculateColorValue(colorArguments(startingRed, finalRed)))
+    setGreen(calculateColorValue(colorArguments(startingGreen, finalGreen)))
+    setBlue(calculateColorValue(colorArguments(startingBlue, finalBlue)))
   }
 
-  const handleColors = () => {
+  function handleColors() {
     const { about, projects, blogs } = heights
 
-    if (window.scrollY < about.endY) {
+    if (scrollIsWithinComponent(about)) {
       setRGB('about', 'projects')
-    } else if (window.scrollY >= about.endY && window.scrollY < projects.endY){
+    } else if (scrollIsWithinComponent(projects)) {
       setRGB('projects', 'blogs')
-    } else if (window.scrollY >= projects.endY && window.scrollY < blogs.endY){
+    } else if (scrollIsWithinComponent(blogs)) {
       setRGB('blogs', 'contact')
     } else {
       setRGB('contact', 'pageEnd')
     }
   }
 
+  function scrollIsWithinComponent(component) {
+    return window.scrollY >= component.startY && window.scrollY < component.endY
+  }
+
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (heights.about) {
       window.addEventListener('scroll', handleColors)
     }
@@ -64,23 +74,23 @@ const App = ({ location }) => {
   
   return (
     <>
-    <Router>
-      <SEO title="kristine codes - homepage" />
+      <SEO title="kristine codes" />
       <Info
-        page={page}
         setPage={setPage}
         red={red}
         green={green}
         blue={blue}
-        />
-        <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
-          <ScrollHandler />
-          <About addHeight={addHeight} />
-          <Projects addHeight={addHeight} />
-          <Blogs addHeight={addHeight} />
-          <Contact addHeight={addHeight} />
-        </main>
-    </Router>
+        aboutRef={aboutRef}
+        projectsRef={projectsRef}
+        blogsRef={blogsRef}
+        contactRef={contactRef}
+      />
+      <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
+        <About aboutRef={aboutRef} addHeight={addHeight} />
+        <Projects projectsRef={projectsRef} addHeight={addHeight} />
+        <Blogs blogsRef={blogsRef} addHeight={addHeight} />
+        <Contact contactRef={contactRef} addHeight={addHeight} />
+      </main>
     </>
   )
 }

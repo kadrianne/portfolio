@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 
-const Blogs = ({ addHeight }) => {
+const Blogs = ({ addHeight, blogsRef }) => {
 
   useEffect(() => {
-    const blogs = document.querySelector('.blogs')
     addHeight((prevState) => ({ ...prevState,
         blogs: {
           startY: prevState.projects.endY, 
-          height: blogs.clientHeight,
-          endY: prevState.projects.endY + blogs.clientHeight
+          height: blogsRef.current.clientHeight,
+          endY: prevState.projects.endY + blogsRef.current.clientHeight
         }
       })
     )
@@ -16,8 +15,8 @@ const Blogs = ({ addHeight }) => {
 
   return (
     <>
-    <section id='#blogs' className='blogs'>
-        <h2>Blogs</h2>
+    <section ref={blogsRef} className='blogs'>
+        <h2>blogs</h2>
     </section>
     </>
   )

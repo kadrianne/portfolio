@@ -39,7 +39,7 @@ main {
 
 section {
   min-height: 100vh;
-  margin: 20px;
+  padding: 20px;
 }
 
 h1 {
@@ -59,6 +59,7 @@ h2 {
   text-align: right;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
+  line-height: $font-xxl;
 }
 
 footer {

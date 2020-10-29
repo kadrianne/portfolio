@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
-const Info = ({ red, green, blue }) => {
+const Info = ({ setPage, red, green, blue, aboutRef, projectsRef, blogsRef, contactRef }) => {
+
+  const handleClick = (element) => setTimeout(() => {
+    setPage(element.className)
+    window.scrollTo({
+      behavior: element ? 'smooth' : 'auto',
+      top: element ? element.offsetTop : 0
+    })
+  }, 100)
 
   return (
       <div className='info'>
         <header>
           <nav className="navbar" role="navigation" aria-label="main navigation">
-              <Link to='#about'>about</Link>
-              <Link to='#projects'>projects</Link>
-              <Link to='#blogs'>blogs</Link>
-              <Link to='#contact'>contact</Link>
-              <a href='' target='_blank'>resume</a>
+            <a onClick={() => handleClick(aboutRef.current)}>about</a>
+            <a onClick={() => handleClick(projectsRef.current)}>projects</a>
+            <a onClick={() => handleClick(blogsRef.current)}>blogs</a>
+            <a onClick={() => handleClick(contactRef.current)}>contact</a>
+            <a href='' target='_blank'>resume</a>
           </nav>
           <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine codes</h1>
         </header>

@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 
-const About = ({ addHeight }) => {
+const About = ({ addHeight, aboutRef }) => {
 
   useEffect(() => {
-    const about = document.querySelector('.about')
     addHeight((prevState) => ({ ...prevState,
         about: {
           startY: 0, 
-          height: about.clientHeight,
-          endY: about.clientHeight
+          height: aboutRef.current.clientHeight,
+          endY: aboutRef.current.clientHeight
         }
       })
     )
@@ -16,7 +15,7 @@ const About = ({ addHeight }) => {
 
   return (
     <>
-    <section id='#about' className='about'>
+    <section ref={aboutRef} className='about'>
         <h2>about</h2>
         <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
     </section>
