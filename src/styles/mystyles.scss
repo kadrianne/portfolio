@@ -7,17 +7,17 @@
 @import "~bulma/bulma.sass";
 
 body {
-    width: 100vw;
+  width: 100vw;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    width: 50%;
-    border: 7px $brown double;
-    position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 50%;
+  border: 7px $brown double;
+  position: fixed;
 }
 
 nav {
@@ -29,28 +29,9 @@ nav a {
   margin: 0 10px;
 }
 
-h1 {
-  font-family: $roboto;
-  font-size: $font-xxxl;
-  text-align: center;
-  margin-top: 100px;
-  font-weight: 700;
-  text-shadow: 1px 2px $brown-light;
-  
-  &.blue {
-      color: $blue;
-  }
-}
-
-footer {
-  margin: 20px
-}
-
-.about {
-  color: $beige-lighter;
-}
-
 main {
+  color: $white;
+  font-size: $font-large;
   position: absolute;
   right: 0;
   width: 50%;
@@ -58,4 +39,44 @@ main {
 
 section {
   min-height: 100vh;
+  margin: 20px;
+}
+
+h1 {
+  font-family: $roboto;
+  font-size: $font-xxxl;
+  text-align: center;
+  margin-top: 150px;
+  font-weight: 700;
+  text-shadow: 1px 2px $brown-light;
+  
+}
+
+h2 {
+  font-family: $roboto;
+  font-size: $font-xxl;
+  color: $white;
+  text-align: right;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+}
+
+footer {
+  margin: 20px
+}
+
+.green {
+  color: $green;
+}
+
+.blue {
+  color: $blue;
+}
+
+.purple {
+    color: $purple;
+}
+
+.yellow {
+    color: $yellow;
 }
