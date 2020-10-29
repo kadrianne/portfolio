@@ -16,7 +16,7 @@ const Blogs = ({ addHeight }) => {
 
   return (
     <>
-    <section className='blogs'>
+    <section id='#blogs' className='blogs'>
         <h2>Blogs</h2>
     </section>
     </>

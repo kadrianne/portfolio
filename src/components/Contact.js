@@ -16,7 +16,7 @@ const Contact = ({ addHeight }) => {
 
   return (
     <>
-    <section className='contact'>
+    <section id='#contact' className='contact'>
         <h2>Contact</h2>
         <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
     </section>

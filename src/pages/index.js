@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+
 import '../styles/mystyles.scss'
+
 import SEO from '../components/seo'
 import Info from '../components/Info'
 import About from '../components/About'
 import Projects from '../components/Projects'
 import Blogs from '../components/Blogs'
 import Contact from '../components/Contact'
+
+import ScrollHandler from '../helpers/scrollHandler'
 import calculateColorValue from '../helpers/calculateColorValue'
 
 const componentColors = {
-  about: [118, 167, 167],
+  about: [80, 124, 124],
   projects: [19, 113, 170],
-  blogs: [202, 175, 212],
-  contact: [247, 214, 173],
-  pageEnd: [237, 213, 191]
+  blogs: [149, 100, 160],
+  contact: [177, 89, 105],
+  pageEnd: [247, 214, 173]
 }
 
 const texts = {
@@ -23,12 +28,13 @@ const texts = {
   contact: 'connects'
 }
 
-const App = () => {
+const App = ({ location }) => {
 
-  const [page, setPage] = useState('about')
+  const [page, setPage] = useState(location.hash.substring(1) || 'about')
   const [heights, addHeight] = useState({})
-  const [ startingRed, startingGreen, startingBlue ] = componentColors.about
 
+  const [ startingRed, startingGreen, startingBlue ] = componentColors[page]
+  
   const [red, setRed] = useState(startingRed)
   const [green, setGreen] = useState(startingGreen)
   const [blue, setBlue] = useState(startingBlue)
@@ -56,7 +62,7 @@ const App = () => {
       setRGB('contact', 'pageEnd')
     }
   }
-
+  
   const handleText = () => {
     const { about, projects, blogs } = heights
 
@@ -72,7 +78,7 @@ const App = () => {
       setPage('contact')
     }
   }
-
+  
   const handleScroll = () => {
     handleColors()
     handleText()
@@ -83,17 +89,27 @@ const App = () => {
       window.addEventListener('scroll', handleScroll)
     }
   }, [heights])
-
+  
   return (
     <>
+    <Router>
       <SEO title="kristine codes - homepage" />
-      <Info text={texts[page]} page={page} setPage={setPage} />
-      <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
+      <Info
+        text={texts[page]}
+        page={page}
+        setPage={setPage}
+        red={red}
+        green={green}
+        blue={blue}
+        />
+        <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
+          <ScrollHandler />
           <About addHeight={addHeight} />
           <Projects addHeight={addHeight} />
           <Blogs addHeight={addHeight} />
           <Contact addHeight={addHeight} />
-      </main>
+        </main>
+    </Router>
     </>
   )
 }

@@ -16,8 +16,8 @@ const Projects = ({ addHeight }) => {
 
   return (
     <>
-    <section className='projects'>
-        <h2>Projects</h2>
+    <section id='#projects' className='projects'>
+        <h2>projects</h2>
         <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
     </section>
     </>

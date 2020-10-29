@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-const Info = ({ text, setPage }) => (
-    <div className='info'>
-      <header>
-        <nav className="navbar" role="navigation" aria-label="main navigation">
-            <a onClick={() => setPage('about')}>about</a>
-            <a onClick={() => setPage('projects')}>projects</a>
-            <a onClick={() => setPage('blogs')}>blogs</a>
-            <a onClick={() => setPage('contact')}>contact</a>
-            <a href='' target='_blank'>resume</a>
-        </nav>
-        <h1 className='blue'>kristine <span>{text}</span></h1>
-      </header>
-      <footer>
-          © {new Date().getFullYear()}
-      </footer>
-    </div>
-)
+const Info = ({ text, page, red, green, blue }) => {
+  
+  const [textClass, setTextClass] = useState(classes.about)
+
+  useEffect(() => {
+    setTextClass(classes[page])
+  }, [page])
+
+  return (
+      <div className='info'>
+        <header>
+          <nav className="navbar" role="navigation" aria-label="main navigation">
+              <Link to='#about'>about</Link>
+              <Link to='#projects'>projects</Link>
+              <Link to='#blogs'>blogs</Link>
+              <Link to='#contact'>contact</Link>
+              <a href='' target='_blank'>resume</a>
+          </nav>
+          <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine {text}</h1>
+        </header>
+        <footer>
+            © {new Date().getFullYear()}
+        </footer>
+      </div>
+  )
+}
 
 export default Info
