@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const Info = ({ text, page, red, green, blue }) => {
-  
-  const [textClass, setTextClass] = useState(classes.about)
-
-  useEffect(() => {
-    setTextClass(classes[page])
-  }, [page])
+const Info = ({ red, green, blue }) => {
 
   return (
       <div className='info'>
@@ -19,7 +13,7 @@ const Info = ({ text, page, red, green, blue }) => {
               <Link to='#contact'>contact</Link>
               <a href='' target='_blank'>resume</a>
           </nav>
-          <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine {text}</h1>
+          <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine codes</h1>
         </header>
         <footer>
             © {new Date().getFullYear()}

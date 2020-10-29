@@ -21,13 +21,6 @@ const componentColors = {
   pageEnd: [247, 214, 173]
 }
 
-const texts = {
-  about: 'codes',
-  projects: 'builds',
-  blogs: 'writes',
-  contact: 'connects'
-}
-
 const App = ({ location }) => {
 
   const [page, setPage] = useState(location.hash.substring(1) || 'about')
@@ -62,31 +55,10 @@ const App = ({ location }) => {
       setRGB('contact', 'pageEnd')
     }
   }
-  
-  const handleText = () => {
-    const { about, projects, blogs } = heights
-
-    const halfHeight = (component) => component.endY - (component.height/2)
-
-    if (window.scrollY < halfHeight(about)) {
-      setPage('about')
-    } else if (window.scrollY >= halfHeight(about) && window.scrollY < halfHeight(projects)){
-      setPage('projects')
-    } else if (window.scrollY >= halfHeight(projects) && window.scrollY < halfHeight(blogs)){
-      setPage('blogs')
-    } else {
-      setPage('contact')
-    }
-  }
-  
-  const handleScroll = () => {
-    handleColors()
-    handleText()
-  }
 
   useEffect(() => {
     if (heights.about) {
-      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleColors)
     }
   }, [heights])
   
@@ -95,7 +67,6 @@ const App = ({ location }) => {
     <Router>
       <SEO title="kristine codes - homepage" />
       <Info
-        text={texts[page]}
         page={page}
         setPage={setPage}
         red={red}
