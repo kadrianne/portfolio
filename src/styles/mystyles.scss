@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+@import './typography';
+@import './colors';
+@import './global';
+
+@import "~bulma/bulma.sass";
+
+body {
+  width: 100vw;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 50%;
+  border: 7px $brown double;
+  position: fixed;
+}
+
+nav {
+  font-size: $font-large;
+  margin: 20px 10px;
+}
+
+nav a {
+  margin: 0 10px;
+}
+
+main {
+  color: $white;
+  font-size: $font-large;
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
+
+section {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-family: $roboto;
+  font-size: $font-xxxl;
+  text-align: center;
+  margin-top: 150px;
+  font-weight: 700;
+  text-shadow: 1px 2px $brown-light;
+  
+}
+
+h2 {
+  font-family: $roboto;
+  font-size: $font-xxl;
+  color: $white;
+  text-align: right;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+  line-height: $font-xxl;
+}
+
+footer {
+  margin: 20px
+}
+
+.green {
+  color: $green;
+}
+
+.blue {
+  color: $blue;
+}
+
+.purple {
+    color: $purple;
+}
+
+.yellow {
+    color: $yellow;
+}
