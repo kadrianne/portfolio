@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react'
+import projectData from '../data/projects'
+import ProjectCard from './ProjectCard'
 
 const Projects = ({ addHeight, projectsRef }) => {
+
+  function displayProjects() {
+    return projectData.map(project => <ProjectCard project={project} />)
+  }
 
   useEffect(() => {
     addHeight((prevState) => ({ ...prevState, 
@@ -17,7 +23,9 @@ const Projects = ({ addHeight, projectsRef }) => {
     <>
     <section ref={projectsRef} className='projects'>
         <h2>projects</h2>
-        <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
+        <div className='card-container'>
+          {displayProjects()}
+        </div>
     </section>
     </>
   )

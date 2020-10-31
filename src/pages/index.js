@@ -66,7 +66,7 @@ const App = ({ location }) => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     if (heights.about) {
       window.addEventListener('scroll', handleColors)
     }

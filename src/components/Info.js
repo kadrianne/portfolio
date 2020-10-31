@@ -20,7 +20,7 @@ const Info = ({ setPage, red, green, blue, aboutRef, projectsRef, blogsRef, cont
             <a onClick={() => handleClick(contactRef.current)}>contact</a>
             <a href='' target='_blank'>resume</a>
           </nav>
-          <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine codes</h1>
+          <h1 style={{color: `rgb(${red},${green},${blue})`}}>kristine <p>codes</p></h1>
         </header>
         <footer>
             © {new Date().getFullYear()}

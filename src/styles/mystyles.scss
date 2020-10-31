@@ -8,6 +8,7 @@
 
 body {
   width: 100vw;
+  font-family: $family-serif;
 }
 
 .info {
@@ -15,14 +16,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: 50%;
+  width: 40%;
   border: 7px $brown double;
   position: fixed;
 }
 
 nav {
   font-size: $font-large;
-  margin: 20px 10px;
+  margin: 20px 40px;
 }
 
 nav a {
@@ -30,21 +31,26 @@ nav a {
 }
 
 main {
+  font-family: $family-serif;
   color: $white;
   font-size: $font-large;
   position: absolute;
   right: 0;
-  width: 50%;
+  width: 60%;
+
+  a {
+    color: $white;
+  }
 }
 
 section {
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 40px;
 }
 
 h1 {
   font-family: $roboto;
-  font-size: $font-xxxl;
+  font-size: $font-xxxxl;
   text-align: center;
   margin-top: 150px;
   font-weight: 700;
@@ -54,16 +60,34 @@ h1 {
 
 h2 {
   font-family: $roboto;
-  font-size: $font-xxl;
+  font-size: $font-xxxl;
   color: $white;
   text-align: right;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
-  line-height: $font-xxl;
 }
 
-footer {
-  margin: 20px
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card {
+  font-size: $font-large;
+  border-left: double 10px $beige-lighter;
+  padding: 0px 20px;
+  width: 45%;
+  margin: 10px 0;
+  
+  a {
+    vertical-align: center;
+    font-size: $font-baseline;
+    padding: 2px;
+  }
+}
+
+.github {
+  width: 20px;
 }
 
 .green {
@@ -75,9 +99,13 @@ footer {
 }
 
 .purple {
-    color: $purple;
+  color: $purple;
 }
 
 .yellow {
-    color: $yellow;
+  color: $yellow;
+}
+
+footer {
+  margin: 20px 40px;
 }
