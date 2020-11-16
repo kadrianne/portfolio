@@ -23,11 +23,26 @@ body {
 
 nav {
   font-size: $font-large;
-  margin: 20px 40px;
+  margin: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 450px;
 }
 
-nav a {
-  margin: 0 10px;
+li {
+  list-style: none;
+}
+
+nav li {
+  a {
+    color: inherit;
+  }
+  
+  a:hover {
+    color: $brown;
+    font-weight: 700;
+    border-bottom: double 5px $brown;
+  }
 }
 
 main {
@@ -43,7 +58,7 @@ main {
   }
 }
 
-section {
+section.top-level {
   min-height: 100vh;
   padding: 20px 40px;
 }
@@ -51,11 +66,10 @@ section {
 h1 {
   font-family: $roboto;
   font-size: $font-xxxxl;
-  text-align: center;
+  margin: 20px 40px;
   margin-top: 150px;
   font-weight: 700;
   text-shadow: 1px 2px $brown-light;
-  
 }
 
 h2 {
@@ -67,21 +81,93 @@ h2 {
   text-shadow: 2px 2px $brown;
 }
 
+h3 {
+  font-family: $roboto;
+  font-size: $font-xxl;
+  color: $white;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+}
+
+h4 {
+  font-family: $roboto;
+  font-size: $font-xl;
+  color: $white;
+  text-align: left;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-template-rows: min-content min-content min-content min-content;
+
+  h2 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  
+  ul {
+    margin: 10px 0 20px 0;
+  }
+  
+  li {
+    padding: 3px 10px;
+  }
+  
+  .left {
+    text-align: left;
+
+    li {
+      border-left: double 3px $white;
+    }
+  }
+
+  .right {
+    text-align: right;
+
+    li {
+      border-right: double 3px $white;
+    }
+  }
+
+  .kristine {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .currently {
+    grid-row: 3;
+  }
+  
+  img.profile {
+    width: 90%;
+    border: solid 1px $white;
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    justify-self: end;
+  }
+
+  .skills {
+    grid-row: 4;
+  }
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
 }
 
 .project-card {
-  font-size: $font-large;
-  border-left: double 10px $beige-lighter;
-  padding: 0px 20px;
-  width: 45%;
+  font-size: $font-baseline;
+  border: double 7px $beige-lighter;
+  padding: 20px;
   margin: 10px 0;
   
   a {
     vertical-align: center;
-    font-size: $font-baseline;
+    font-size: $font-large;
     padding: 2px;
   }
 }
@@ -107,5 +193,5 @@ h2 {
 }
 
 footer {
-  margin: 20px 40px;
+  margin: 25px 40px;
 }

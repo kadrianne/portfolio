@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import picture from '../images/kristine.jpg'
 
 const About = ({ addHeight, aboutRef }) => {
 
@@ -15,9 +16,29 @@ const About = ({ addHeight, aboutRef }) => {
 
   return (
     <>
-    <section ref={aboutRef} className='about'>
+    <section ref={aboutRef} className='about top-level'>
         <h2>about</h2>
-        <img src='https://i.kym-cdn.com/photos/images/original/001/295/524/cda.jpg' ></img>
+        <section className='left kristine'>
+          <h3>kristine du</h3>
+          <ul>
+            <li>full-stack software engineer</li>
+            <li>former project manager</li>
+            <li>puzzle/board game lover</li>
+            <li>amateur pole dancer</li>
+          </ul>
+        </section>
+        <section className='right currently'>
+          <h3>currently</h3>
+          <ul>
+            <li>software engineering coach @ Flatiron School</li>
+            <li>project lead with Code for Denver</li>
+            <li>open to full-time & freelance opportunities</li>
+          </ul>
+        </section>
+        <section className='skills'>
+          <h3>skills</h3>
+        </section>
+        <img src={picture} alt='kristine-profile' className='profile' ></img>
     </section>
     </>
   )
