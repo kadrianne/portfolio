@@ -74,7 +74,7 @@ section.top-level {
 
 h1 {
   font-family: $roboto;
-  font-size: $font-xxxxl;
+  font-size: $font-xxxxxl;
   margin: 20px 40px;
   margin-top: 150px;
   font-weight: 700;
@@ -83,7 +83,7 @@ h1 {
 
 h2 {
   font-family: $roboto;
-  font-size: $font-xxxl;
+  font-size: $font-xxxxl;
   color: $white;
   text-align: right;
   font-weight: 700;
@@ -92,7 +92,7 @@ h2 {
 
 h3 {
   font-family: $roboto;
-  font-size: $font-xxl;
+  font-size: $font-xxxl;
   color: $white;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
@@ -145,6 +145,7 @@ h4 {
 
   .currently {
     grid-row: 3;
+    // align-self: end;
   }
   
   img.profile {
@@ -157,23 +158,27 @@ h4 {
   
   .skills {
     grid-column: 1 / span 2;
+    margin: 50px 0;
   }
   
   .skills-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
+    span {
+      width: 250px;
+    }
   }
 
-  .tech {
-    text-align: center;
-    margin-bottom: 25px;
-    min-width: 250px;
+  img.logo {
+    display: block;
+    height: 100px;
+    margin: 25px auto;
+    transition: transform .2s;
 
-    img.logo {
-      display: block;
-      height: 100px;
-      margin: 0 auto 10px auto;
+    &:hover {
+      transform: scale(1.2);
     }
   }
 
