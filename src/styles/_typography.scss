@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 
-$family-sans-serif: 'Nunito Sans', sans-serif;
+$family-serif: 'Merriweather', serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
-$font-xxs: 8px;
-$font-xs: 10px;
-$font-small: 12px;
-$font-baseline: 14px;
+$font-xxs: 10px;
+$font-xs: 12px;
+$font-small: 14px;
+$font-baseline: 16px;
 $font-large: 18px;
 $font-xl: 24px;
 $font-xxl: 30px;
-$font-xxl: 48px;
-$font-xxxl: 60px;
+$font-xxxl: 36px;
+$font-xxxxl: 48px;
+$font-xxxxxl: 72px;

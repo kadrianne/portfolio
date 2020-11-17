@@ -8,6 +8,7 @@
 
 body {
   width: 100vw;
+  font-family: $family-serif;
 }
 
 .info {
@@ -15,55 +16,200 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: 50%;
+  width: 40%;
   border: 7px $brown double;
   position: fixed;
 }
 
 nav {
   font-size: $font-large;
-  margin: 20px 10px;
-}
+  margin: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 450px;
 
-nav a {
-  margin: 0 10px;
+  li {
+    list-style: none;
+  }
+  
+  a {
+    color: inherit;
+  }
+  
+  a:hover {
+    color: $brown;
+    font-weight: 700;
+    border-bottom: double 5px $brown;
+  }
+
+  @media screen and (max-width: $widescreen){
+    a {
+      font-size: $font-baseline;
+    }
+  }
 }
 
 main {
+  font-family: $family-serif;
   color: $white;
   font-size: $font-large;
   position: absolute;
   right: 0;
-  width: 50%;
+  width: 60%;
+
+  a {
+    color: $white;
+  }
 }
 
-section {
+section.top-level {
   min-height: 100vh;
-  padding: 20px;
+  margin: 20px 40px;
+  border-bottom: double 5px $white;
+  
+  &.last {
+    border-bottom: none;
+  }
 }
 
 h1 {
   font-family: $roboto;
-  font-size: $font-xxxl;
-  text-align: center;
+  font-size: $font-xxxxxl;
+  margin: 20px 40px;
   margin-top: 150px;
   font-weight: 700;
   text-shadow: 1px 2px $brown-light;
-  
 }
 
 h2 {
   font-family: $roboto;
-  font-size: $font-xxl;
+  font-size: $font-xxxxl;
   color: $white;
   text-align: right;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
-  line-height: $font-xxl;
 }
 
-footer {
-  margin: 20px
+h3 {
+  font-family: $roboto;
+  font-size: $font-xxxl;
+  color: $white;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-family: $roboto;
+  font-size: $font-xl;
+  color: $white;
+  text-align: left;
+  font-weight: 700;
+  text-shadow: 2px 2px $brown;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-auto-rows: min-content;
+
+  h2 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  
+  li {
+    padding: 3px 10px;
+  }
+  
+  .left {
+    text-align: left;
+
+    li {
+      border-left: double 5px $white;
+    }
+  }
+
+  .right {
+    text-align: right;
+
+    li {
+      border-right: double 5px $white;
+    }
+  }
+
+  .kristine {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .currently {
+    grid-row: 3;
+    // align-self: end;
+  }
+  
+  img.profile {
+    width: 90%;
+    border: solid 1px $white;
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    justify-self: end;
+  }
+  
+  .skills {
+    grid-column: 1 / span 2;
+    margin: 50px 0;
+  }
+  
+  .skills-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    span {
+      width: 250px;
+    }
+  }
+
+  img.logo {
+    display: block;
+    height: 100px;
+    margin: 25px auto;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @media screen and (max-width: $widescreen){
+    .currently {
+      grid-row: 4;
+      grid-column: 1 / span 2;
+    }
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card {
+  font-size: $font-baseline;
+  border: double 7px $beige-lighter;
+  padding: 20px;
+  margin: 10px 0;
+  
+  a {
+    vertical-align: center;
+    font-size: $font-large;
+    padding: 2px;
+  }
+}
+
+.github {
+  width: 20px;
 }
 
 .green {
@@ -75,9 +221,13 @@ footer {
 }
 
 .purple {
-    color: $purple;
+  color: $purple;
 }
 
 .yellow {
-    color: $yellow;
+  color: $yellow;
+}
+
+footer {
+  margin: 25px 40px;
 }
