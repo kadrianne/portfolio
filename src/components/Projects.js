@@ -4,8 +4,8 @@ import ProjectCard from './ProjectCard'
 
 const Projects = ({ addHeight, projectsRef }) => {
 
-  function displayProjects() {
-    return projectData.map(project => <ProjectCard project={project} />)
+  function displayProjects(key) {
+    return projectData[key].map(project => <ProjectCard key={project.id} project={project} />)
   }
 
   useEffect(() => {
@@ -21,11 +21,20 @@ const Projects = ({ addHeight, projectsRef }) => {
 
   return (
     <>
-    <section ref={projectsRef} className='projects'>
+    <section ref={projectsRef} className='projects top-level'>
         <h2>projects</h2>
-        <div className='card-container'>
-          {displayProjects()}
-        </div>
+        <section  className='card-container'>
+          <h3>personal</h3>
+          <div className='project-cards'>
+            {displayProjects('personal')}
+          </div>
+        </section>
+        <section className='card-container'>
+          <h3>collaborative</h3>
+          <div className='project-cards'>
+            {displayProjects('group')}
+          </div>
+        </section>
     </section>
     </>
   )

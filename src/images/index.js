@@ -13,6 +13,9 @@ import reduxLogo from './redux.png'
 import nodeLogo from './node.png'
 import expressLogo from './express.png'
 import postgresLogo from './postgres.png'
+import pickyeats from './pickyeats-cover.png'
+import minesweeper from './minesweeper.png'
+import weddingWebsite from './wedding-website.png'
 
 export {
   kristine,
@@ -29,5 +32,8 @@ export {
   reduxLogo,
   nodeLogo,
   expressLogo,
-  postgresLogo
+  postgresLogo,
+  pickyeats,
+  minesweeper,
+  weddingWebsite
 }

@@ -101,11 +101,27 @@ h3 {
 
 h4 {
   font-family: $roboto;
-  font-size: $font-xl;
+  font-size: $font-xxl;
   color: $white;
   text-align: left;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
+}
+
+.left {
+  text-align: left;
+
+  li {
+    border-left: double 5px $white;
+  }
+}
+
+.right {
+  text-align: right;
+
+  li {
+    border-right: double 5px $white;
+  }
 }
 
 .about {
@@ -117,25 +133,9 @@ h4 {
     grid-row: 1;
     grid-column: 2;
   }
-  
+
   li {
     padding: 3px 10px;
-  }
-  
-  .left {
-    text-align: left;
-
-    li {
-      border-left: double 5px $white;
-    }
-  }
-
-  .right {
-    text-align: right;
-
-    li {
-      border-right: double 5px $white;
-    }
   }
 
   .kristine {
@@ -145,7 +145,6 @@ h4 {
 
   .currently {
     grid-row: 3;
-    // align-self: end;
   }
   
   img.profile {
@@ -178,7 +177,7 @@ h4 {
     transition: transform .2s;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 
@@ -195,16 +194,102 @@ h4 {
   flex-direction: column;
 }
 
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .project-card {
-  font-size: $font-baseline;
-  border: double 7px $beige-lighter;
-  padding: 20px;
-  margin: 10px 0;
+  // border: double 7px $beige-lighter;
+  // padding: 20px;
+  margin: 10px 0 20px 0;
+  display: flex;
+  // width: 45%;
+  width: 100%;
+
+  &.feature {
+    img {
+      width: 35%;
+      padding-right: 20px;
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    width: 49%;
+  }
   
+
+  .links {
+    display: flex;
+    margin: 5px 0;
+    
+    li {
+      padding-right: 20px;
+    }
+  }
+  
+  .description {
+    border-top: double 5px $beige-lighter;
+    border-bottom: double 5px $beige-lighter;
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    ul {
+      margin: 0;
+    }
+    
+    li {
+      margin: 0;
+      padding: 0 3px 0 0 ;
+      // list-style-type: disc;
+      // list-style-position: initial;
+      // display: inline;
+    }
+  }
+
   a {
-    vertical-align: center;
-    font-size: $font-large;
-    padding: 2px;
+    // font-family: $family-serif;
+    // font-size: $font-large;
+    // background-color: $white;
+    // border: none;
+    // color: $brown;
+    // padding: 5px;
+    // transition: .2s transform;
+
+    &:hover {
+      cursor: pointer;
+      color: $beige-lighter;
+      // font-weight: 700;
+    }
+  }
+
+  @media screen and (max-width: $fullhd){
+    h4 {
+      // font-size: $font-xl;
+    }
+    .links {
+      font-size: $font-baseline;
+    }
+  }
+  
+  @media screen and (max-width: $widescreen) {
+    .links {
+      
+      li {
+        padding-right: 10px;
+      }
+    }
+
+    a {
+      // font-size: $font-baseline;
+    }
   }
 }
 
@@ -226,6 +311,10 @@ h4 {
 
 .yellow {
   color: $yellow;
+}
+
+.brown {
+  color: $brown-light;
 }
 
 footer {
