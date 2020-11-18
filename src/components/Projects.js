@@ -1,23 +1,37 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import projectData from '../data/projects'
 import ProjectCard from './ProjectCard'
 
-const Projects = ({ addHeight, projectsRef }) => {
+const Projects = ({ heights, addHeight, projectsRef, componentLoaded, setComponentLoaded }) => {
+
+  const [imagesLoaded, setImagesLoaded] = useState(0)
+
+  function handleLoad() {
+    setImagesLoaded(imagesLoaded + 1)
+  }
 
   function displayProjects(key) {
-    return projectData[key].map(project => <ProjectCard key={project.id} project={project} />)
+    return projectData[key].map(project => <ProjectCard key={project.id} project={project} handleLoad={handleLoad} />)
   }
 
   useEffect(() => {
-    addHeight((prevState) => ({ ...prevState, 
+    // Object.values(projectData).flat().length
+    if (componentLoaded.about && imagesLoaded === 3) {
+      addHeight((prevState) => ({ ...prevState, 
         projects: {
           startY: prevState.about.endY, 
           height: projectsRef.current.clientHeight,
           endY: prevState.about.endY + projectsRef.current.clientHeight
         }
-      })
-    )
-  }, [])
+      }))
+    }
+  }, [componentLoaded.about, imagesLoaded])
+
+  useEffect(() => {
+    if (heights.projects) {
+      setComponentLoaded({...componentLoaded, projects: true})
+    }
+  }, [heights.projects])
 
   return (
     <>

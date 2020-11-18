@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faVideo } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-const ProjectCard = (props) => {
+const ProjectCard = ({ project, handleLoad }) => {
   const {
     title,
     image,
@@ -14,24 +14,25 @@ const ProjectCard = (props) => {
     demo,
     description,
     isFeature
-  } = props.project
+  } = project
+
 
   const bullet = '\u2022'
   const displayTech = (techs) => {
-    return <ul class='tech-list'>{bullet} {techs.map(tech => <li>{tech} {bullet} </li>)}</ul>
+    return <ul className='tech-list'>{bullet} {techs.map((tech,index) => <li key={index}>{tech} {bullet} </li>)}</ul>
   }
 
   return (
     <section className={`project-card ${isFeature ? 'feature' : 'vertical'}`}>
-      <img src={image}></img>
+      <img src={image} onLoad={handleLoad}></img>
       <div className='project-info'>
-        <h4 class='project-name'>
+        <h4 className='project-name'>
           { link 
             ? <a href={link} target='_blank'>{title} <FontAwesomeIcon className='brown' icon={faLink} size='xs' /></a>
             : title
           }
         </h4>
-        <ul class='links'>
+        <ul className='links'>
           <li>
             <a href={demo} target='_blank'>
               demo <FontAwesomeIcon icon={faVideo} />
@@ -50,7 +51,7 @@ const ProjectCard = (props) => {
             </li>
           }
         </ul>
-        <p class='description'>{description}</p>
+        <p className='description'>{description}</p>
         {displayTech(tech)}
       </div>
     </section>
