@@ -10,7 +10,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
   }
 
   useEffect(() => {
-    if (imagesLoaded == 15) {
+    if (imagesLoaded === 15) {
       addHeight((prevState) => ({ ...prevState,
         about: {
           startY: 0, 
