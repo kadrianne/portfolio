@@ -6,10 +6,12 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
   const [imagesLoaded, setImagesLoaded] = useState(0)
 
   function handleLoad() {
+    console.log('about handleLoad')
     setImagesLoaded(imagesLoaded + 1)
   }
 
   useEffect(() => {
+    console.log(imagesLoaded, 'about imagesLoaded')
     if (imagesLoaded === 15) {
       addHeight((prevState) => ({ ...prevState,
         about: {
@@ -18,6 +20,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
           endY: aboutRef.current.clientHeight
         }
       }))
+      setComponentLoaded({...componentLoaded, about: true})
     }
   }, [imagesLoaded])
 
