@@ -16,6 +16,7 @@ import postgresLogo from './postgres.png'
 import pickyeats from './pickyeats-cover.png'
 import minesweeper from './minesweeper.png'
 import weddingWebsite from './wedding-website.png'
+import cfd from './cfd.png'
 
 export {
   kristine,
@@ -35,5 +36,6 @@ export {
   postgresLogo,
   pickyeats,
   minesweeper,
-  weddingWebsite
+  weddingWebsite,
+  cfd
 }

@@ -16,7 +16,7 @@ const componentColors = {
   projects: [140, 94, 155],
   blogs: [19, 113, 170],
   contact: [80, 124, 124],
-  pageEnd: [80, 40, 54]
+  pageEnd: [0, 40, 54]
 }
 
 const App = () => {

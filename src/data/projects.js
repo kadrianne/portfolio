@@ -1,4 +1,4 @@
-import { minesweeper, pickyeats, weddingWebsite } from '../images'
+import { minesweeper, pickyeats, weddingWebsite, cfd } from '../images'
 
 const projects = {
   personal: [{
@@ -10,7 +10,7 @@ const projects = {
     tech: ['React Native', 'Redux', 'Python 3', 'Django', 'Django Rest Framework', 'PostgreSQL'],
     demo: 'https://www.loom.com/share/ca778dcf803442459ef00976ef3411bc',
     description: 'Tinder for restaurants: A mobile app allowing users to connect with each other in parties and assist in swiftly deciding on a place to eat.',
-    isFeature: true
+    isMobile: true
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const projects = {
     tech: ['React', 'Material UI', 'Node.js', 'Express.js', 'Knex.js', 'Objection.js', 'PostgreSQL'],
     demo: 'https://www.loom.com/share/82baf2309ffc461eb1ae945ea4587479',
     description: 'A modern take on the classic and addicting puzzle computer game.',
-    isFeature: false
+    isMobile: false
   },
   {
     id: 3,
@@ -34,15 +34,16 @@ const projects = {
     tech: ['JavaScript', 'HTML', 'CSS', 'SASS', 'Bootstrap', 'Ruby', 'Rails', 'PostgreSQL'],
     demo: 'https://www.loom.com/share/d887646dd15f4f69bcf224b9b66bf976',
     description: 'A personal website to provide wedding guests with event details and RSVP functionality and access to an admin dashboard for guest management.',
-    isFeature: false
+    isMobile: false
   }],
   group: [{
     id: 4,
     title: 'Code for Denver Website',
+    image: cfd,
     frontend: 'https://github.com/codefordenver/codefordenver.org/tree/convert-to-jekyll',
     tech: ['JavaScript', 'HTML', 'CSS', 'Ruby', 'Jekyll'],
     description: 'Ongoing open-source project for the redesign of Code for Denver\'s existing website.',
-    isFeature: true
+    isMobile: false
   }]
 }
 

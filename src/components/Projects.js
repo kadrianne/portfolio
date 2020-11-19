@@ -37,7 +37,7 @@ const Projects = ({ heights, addHeight, projectsRef, componentLoaded, setCompone
     <>
     <section ref={projectsRef} className='projects top-level'>
         <h2>projects</h2>
-        <section  className='card-container'>
+        <section className='card-container'>
           <h3>personal</h3>
           <div className='project-cards'>
             {displayProjects('personal')}

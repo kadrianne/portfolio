@@ -13,7 +13,7 @@ const ProjectCard = ({ project, handleLoad }) => {
     backend,
     demo,
     description,
-    isFeature
+    isMobile
   } = project
 
 
@@ -23,8 +23,8 @@ const ProjectCard = ({ project, handleLoad }) => {
   }
 
   return (
-    <section className={`project-card ${isFeature ? 'feature' : 'vertical'}`}>
-      <img src={image} onLoad={handleLoad}></img>
+    <section className={`project-card ${isMobile ? 'mobile' : 'web'}`}>
+      <div className='app-image'><img src={image} onLoad={handleLoad}></img></div>
       <div className='project-info'>
         <h4 className='project-name'>
           { link 
@@ -33,11 +33,13 @@ const ProjectCard = ({ project, handleLoad }) => {
           }
         </h4>
         <ul className='links'>
-          <li>
-            <a href={demo} target='_blank'>
-              demo <FontAwesomeIcon icon={faVideo} />
-            </a>
-          </li>
+          { demo &&
+            <li>
+              <a href={demo} target='_blank'>
+                demo <FontAwesomeIcon icon={faVideo} />
+              </a>
+            </li>
+          }
           <li>
             <a href={frontend} target='_blank'>
               front-end <FontAwesomeIcon icon={faGithub} />
