@@ -1,33 +1,62 @@
 import React from 'react'
-import github from '../images/github.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLink, faVideo } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-const ProjectCard = (props) => {
+const ProjectCard = ({ project, handleLoad }) => {
   const {
     title,
+    image,
     link,
     frontend,
-    frontendTech,
+    tech,
     backend,
-    // backendTech,
-    // demo,
-    // description,
-    // bulletPoints
-  } = props.project
+    demo,
+    description,
+    isMobile
+  } = project
+
+
+  const bullet = '\u2022'
+  const displayTech = (techs) => {
+    return <ul className='tech-list'>{bullet} {techs.map((tech,index) => <li key={index}>{tech} {bullet} </li>)}</ul>
+  }
 
   return (
-    <article className='project-card'>
-      <h3>{title}</h3>
-      <ul>
-        <li><a href={link}>live site</a></li>
-        { backend
-          ? <>
-          <li><a href={frontend}><span><img class='github' src={github} /></span> front-end:</a> {frontendTech}</li>
-          <li><a href={backend}>back-end</a></li>
-          </>
-          : <li><a href={frontend}>repo</a></li>
-        }
-      </ul>
-    </article>
+    <section className={`project-card ${isMobile ? 'mobile' : 'web'}`}>
+      <div className='app-image'><img src={image} onLoad={handleLoad}></img></div>
+      <div className='project-info'>
+        <h4 className='project-name'>
+          { link 
+            ? <a href={link} target='_blank'>{title} <FontAwesomeIcon className='brown' icon={faLink} size='xs' /></a>
+            : title
+          }
+        </h4>
+        <ul className='links'>
+          { demo &&
+            <li>
+              <a href={demo} target='_blank'>
+                demo <FontAwesomeIcon icon={faVideo} />
+              </a>
+            </li>
+          }
+          <li>
+            <a href={frontend} target='_blank'>
+              front-end <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </li>
+          { backend &&
+            <li>
+              <a href={backend} target='_blank'>
+                back-end <FontAwesomeIcon icon={faGithub} />
+              </a>
+            </li>
+          }
+        </ul>
+        <p className='description'>{description}</p>
+        {displayTech(tech)}
+      </div>
+    </section>
   )
 }
 

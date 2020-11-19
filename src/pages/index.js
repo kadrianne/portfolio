@@ -12,19 +12,24 @@ import Contact from '../components/Contact'
 import calculateColorValue from '../helpers/calculateColorValue'
 
 const componentColors = {
-  about: [80, 124, 124],
-  projects: [19, 113, 170],
-  blogs: [149, 100, 160],
-  contact: [177, 89, 105],
-  pageEnd: [247, 214, 173]
+  about: [180, 79, 101],
+  projects: [140, 94, 155],
+  blogs: [19, 113, 170],
+  contact: [80, 124, 124],
+  pageEnd: [0, 40, 54]
 }
 
-const App = ({ location }) => {
+const App = () => {
 
-  const [page, setPage] = useState(location.hash.substring(1) || 'about')
   const [heights, addHeight] = useState({})
+  const [componentLoaded, setComponentLoaded] = useState({
+    about: false,
+    projects: false,
+    blogs: false,
+    contact: false
+  })
 
-  const [ startingRed, startingGreen, startingBlue ] = componentColors[page]
+  const [ startingRed, startingGreen, startingBlue ] = componentColors['about']
   
   const [red, setRed] = useState(startingRed)
   const [green, setGreen] = useState(startingGreen)
@@ -66,8 +71,7 @@ const App = ({ location }) => {
   }
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
-    if (heights.about) {
+    if (Object.keys(heights).length === 4) {
       window.addEventListener('scroll', handleColors)
     }
   }, [heights])
@@ -76,7 +80,6 @@ const App = ({ location }) => {
     <>
       <SEO title="kristine codes" />
       <Info
-        setPage={setPage}
         red={red}
         green={green}
         blue={blue}
@@ -86,10 +89,10 @@ const App = ({ location }) => {
         contactRef={contactRef}
       />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
-        <About aboutRef={aboutRef} addHeight={addHeight} />
-        <Projects projectsRef={projectsRef} addHeight={addHeight} />
-        <Blogs blogsRef={blogsRef} addHeight={addHeight} />
-        <Contact contactRef={contactRef} addHeight={addHeight} />
+        <About aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
+        <Projects projectsRef={projectsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
+        <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
+        <Contact contactRef={contactRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
       </main>
     </>
   )
