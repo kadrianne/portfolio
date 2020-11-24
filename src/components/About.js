@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import Image from './Image'
 import { kristine, jsLogo, reactLogo, rubyLogo, railsLogo, htmlLogo, cssLogo, sassLogo, pythonLogo, djangoLogo, drfLogo, reduxLogo, nodeLogo, expressLogo, postgresLogo } from '../images'
+
+const logos = [
+  {title: 'JavaScript ES5 / ES2015', image: jsLogo},
+  {title: 'React / React Native', image: reactLogo},
+  {title: 'Ruby', image: rubyLogo},
+  {title: 'Rails', image: railsLogo},
+  {title: 'HTML 5', image: htmlLogo},
+  {title: 'CSS 3', image: cssLogo},
+  {title: 'Sass', image: sassLogo},
+  {title: 'Python 3', image: pythonLogo},
+  {title: 'Django', image: djangoLogo},
+  {title: 'Django REST Framework', image: drfLogo},
+  {title: 'Node.js', image: nodeLogo},
+  {title: 'Express.js', image: expressLogo},
+  {title: 'Redux', image: reduxLogo},
+  {title: 'PostgreSQL', image: postgresLogo}
+]
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
   
@@ -30,6 +48,8 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
     }
   }, [heights.about])
 
+  const renderLogos = () => logos.map(logo => <Image src={logo.image} title={logo.title} handleLoad={handleLoad} />)
+
   return (
     <>
     <section ref={aboutRef} className='about top-level'>
@@ -55,20 +75,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
         <section className='skills'>
           <h3>skills</h3>
           <div className='skills-content'>
-            <span><img src={jsLogo} alt='javascript logo' className='logo' onLoad={handleLoad} title='JavaScript ES5 / ES2015'></img></span>
-            <span><img src={reactLogo} alt='react logo' className='logo' onLoad={handleLoad} title='React / React Native'></img></span>
-            <span><img src={rubyLogo} alt='ruby logo' className='logo' onLoad={handleLoad} title='Ruby'></img></span>
-            <span><img src={railsLogo} alt='rails logo' className='logo' onLoad={handleLoad} title='Rails'></img></span>
-            <span><img src={htmlLogo} alt='html logo' className='logo' onLoad={handleLoad} title='HTML 5'></img></span>
-            <span><img src={cssLogo} alt='css logo' className='logo' onLoad={handleLoad} title='CSS 3'></img></span>
-            <span><img src={sassLogo} alt='sass logo' className='logo' onLoad={handleLoad} title='Sass'></img></span>
-            <span><img src={pythonLogo} alt='python logo' className='logo' onLoad={handleLoad} title='Python 3'></img></span>
-            <span><img src={djangoLogo} alt='django logo' className='logo' onLoad={handleLoad} title='Django'></img></span>
-            <span><img src={drfLogo} alt='django-rest-framework logo' className ='logo' onLoad={handleLoad} title='Django REST Framework'></img></span>
-            <span><img src={nodeLogo} alt='node logo' className='logo' onLoad={handleLoad} title='Node.js'></img></span>
-            <span><img src={expressLogo} alt='express logo' className='logo' onLoad={handleLoad} title='Express.js'></img></span>
-            <span><img src={reduxLogo} alt='redux logo' className='logo' onLoad={handleLoad} title='Redux'></img></span>
-            <span><img src={postgresLogo} alt='postgresql logo' className='logo' onLoad={handleLoad} title='PostgreSQL'></img></span>
+            {renderLogos()}
           </div>
         </section>
     </section>
