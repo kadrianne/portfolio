@@ -1,6 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import BlogPost from './BlogPost'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMedium } from '@fortawesome/free-brands-svg-icons'
 
 const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoaded }) => {
+
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     if (componentLoaded.projects) {
@@ -21,10 +26,23 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
     }
   }, [heights.blogs])
 
+  useEffect(() => {
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40kristine-a-du')
+      .then(response => response.json())
+      .then(data => {setPosts(data.items)
+      })
+  }, [])
+
+  const displayPosts = () => {
+    return posts.map(post => <BlogPost post={post} />)
+  }
+
   return (
     <>
     <section ref={blogsRef} className='blogs top-level'>
         <h2>blogs</h2>
+        <h3><a href='https://kristine-a-du.medium.com'><FontAwesomeIcon className='beige' icon={faMedium} size='lg' /> kristine-a-du</a></h3>
+        {displayPosts()}
     </section>
     </>
   )
