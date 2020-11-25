@@ -34,7 +34,7 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
     return links.map(link => (
       <li>
         <a href={link.href} target='_blank'>
-          <FontAwesomeIcon className='icon beige' icon={link.icon} size='6x' />
+          <FontAwesomeIcon className='icon beige' icon={link.icon} />
           {link.info}
         </a>
       </li>

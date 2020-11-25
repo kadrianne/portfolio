@@ -21,6 +21,10 @@ body {
   position: fixed;
 }
 
+a:hover {
+  font-weight: 700;
+}
+
 nav {
   font-size: $font-large;
   margin: 25px 40px;
@@ -38,7 +42,6 @@ nav {
   
   a:hover {
     color: $brown;
-    font-weight: 700;
     border-bottom: double 5px $brown;
   }
 
@@ -97,6 +100,10 @@ h3 {
   font-weight: 700;
   text-shadow: 2px 2px $brown;
   margin-bottom: 10px;
+
+  a:hover {
+    color: $beige-light;
+  }
 }
 
 h4 {
@@ -106,6 +113,10 @@ h4 {
   text-align: left;
   font-weight: 700;
   text-shadow: 2px 2px $brown;
+
+  a:hover {
+    color: $beige-light;
+  }
 }
 
 .left {
@@ -263,6 +274,7 @@ h4 {
       cursor: pointer;
       color: $beige-light;
     }
+    
   }
 
   @media screen and (max-width: $fullhd){
@@ -296,21 +308,30 @@ h4 {
   // }
 }
 
+article {
+  border-bottom: double 3px $white;
+  padding: 25px 50px;
+  margin: 0 50px 25px 50px;
+
+  .post-preview {
+    font-size: $font-baseline;
+  }
+}
+
 .contact-links {
   padding: 50px;
 
   a {
     display: inline-flex;
     align-items: center;
-
+  
     .icon {
       margin: 5px;
       width: 30px;
     }
-
+  
     &:hover {
       color: $beige-light;
-      font-weight: 700;
     }
   }
 }
