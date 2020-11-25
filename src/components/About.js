@@ -1,23 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from './Image'
-import { kristine, jsLogo, reactLogo, rubyLogo, railsLogo, htmlLogo, cssLogo, sassLogo, pythonLogo, djangoLogo, drfLogo, reduxLogo, nodeLogo, expressLogo, postgresLogo } from '../images'
-
-const logos = [
-  {title: 'JavaScript ES5 / ES2015', image: jsLogo},
-  {title: 'React / React Native', image: reactLogo},
-  {title: 'Ruby', image: rubyLogo},
-  {title: 'Rails', image: railsLogo},
-  {title: 'HTML 5', image: htmlLogo},
-  {title: 'CSS 3', image: cssLogo},
-  {title: 'Sass', image: sassLogo},
-  {title: 'Python 3', image: pythonLogo},
-  {title: 'Django', image: djangoLogo},
-  {title: 'Django REST Framework', image: drfLogo},
-  {title: 'Node.js', image: nodeLogo},
-  {title: 'Express.js', image: expressLogo},
-  {title: 'Redux', image: reduxLogo},
-  {title: 'PostgreSQL', image: postgresLogo}
-]
+import { logos, kristine } from '../images'
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
   
