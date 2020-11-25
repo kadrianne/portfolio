@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from './Image'
-import { logos, kristine } from '../images'
+import { logos, kristine } from '../assets'
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
   

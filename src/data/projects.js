@@ -1,4 +1,4 @@
-import { minesweeper, pickyeats, weddingWebsite, cfd } from '../images'
+import { minesweeper, pickyeats, weddingWebsite, cfd } from '../assets'
 
 const projects = {
   personal: [{
