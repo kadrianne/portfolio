@@ -36,19 +36,19 @@ const ProjectCard = ({ project, handleLoad }) => {
           { demo &&
             <li>
               <a href={demo} target='_blank'>
-                demo <FontAwesomeIcon icon={faVideo} />
+                <FontAwesomeIcon icon={faVideo} /> demo
               </a>
             </li>
           }
           <li>
             <a href={frontend} target='_blank'>
-              front-end <FontAwesomeIcon icon={faGithub} />
+              <FontAwesomeIcon icon={faGithub} /> front-end
             </a>
           </li>
           { backend &&
             <li>
               <a href={backend} target='_blank'>
-                back-end <FontAwesomeIcon icon={faGithub} />
+                <FontAwesomeIcon icon={faGithub} /> back-end
               </a>
             </li>
           }

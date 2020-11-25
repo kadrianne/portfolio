@@ -1,4 +1,5 @@
 import React from 'react'
+import resume from '../assets/kristine-du-resume.pdf'
 
 const Info = ({ red, green, blue, aboutRef, projectsRef, blogsRef, contactRef }) => {
 
@@ -17,7 +18,7 @@ const Info = ({ red, green, blue, aboutRef, projectsRef, blogsRef, contactRef })
             <li><a onClick={() => handleClick(projectsRef.current)}>projects</a></li>
             <li><a onClick={() => handleClick(blogsRef.current)}>blogs</a></li>
             <li><a onClick={() => handleClick(contactRef.current)}>contact</a></li>
-            <li><a href='' target='_blank'>resume</a></li>
+            <li><a href={resume} target='_blank'>resume</a></li>
           </nav>
           <h1>kristine <p>codes</p></h1>
         </header>
