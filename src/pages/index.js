@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
 
 import '../styles/mystyles.scss'
 
@@ -20,7 +22,6 @@ const componentColors = {
 }
 
 const App = () => {
-
   const [heights, addHeight] = useState({})
   const [componentLoaded, setComponentLoaded] = useState({
     about: false,
@@ -52,7 +53,7 @@ const App = () => {
     setBlue(calculateColorValue(colorArguments(startingBlue, finalBlue)))
   }
 
-  function handleColors() {
+  const handleColors = () => {
     const { about, projects, blogs } = heights
 
     if (scrollIsWithinComponent(about)) {
@@ -66,7 +67,17 @@ const App = () => {
     }
   }
 
-  function scrollIsWithinComponent(component) {
+  const handleClick = (element) => {
+    console.log(element)
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: element ? element.offsetTop : 0
+      })
+    }, 100)
+  }
+
+  const scrollIsWithinComponent = (component) => {
     return window.scrollY >= component.startY && window.scrollY < component.endY
   }
 
@@ -87,8 +98,10 @@ const App = () => {
         projectsRef={projectsRef}
         blogsRef={blogsRef}
         contactRef={contactRef}
+        handleClick={handleClick}
       />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
+        {window.scrollY > 0 && <FontAwesomeIcon className='scroll-to-top' icon={faArrowCircleUp} size='2x' onClick={() => handleClick()} />}
         <About aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Projects projectsRef={projectsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
