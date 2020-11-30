@@ -22,7 +22,6 @@ const componentColors = {
 }
 
 const App = () => {
-
   const [heights, addHeight] = useState({})
   const [componentLoaded, setComponentLoaded] = useState({
     about: false,
@@ -54,7 +53,7 @@ const App = () => {
     setBlue(calculateColorValue(colorArguments(startingBlue, finalBlue)))
   }
 
-  function handleColors() {
+  const handleColors = () => {
     const { about, projects, blogs } = heights
 
     if (scrollIsWithinComponent(about)) {
@@ -68,7 +67,7 @@ const App = () => {
     }
   }
 
-  function handleClick(element){
+  const handleClick = (element) => {
     console.log(element)
     setTimeout(() => {
       window.scrollTo({
@@ -78,7 +77,7 @@ const App = () => {
     }, 100)
   }
 
-  function scrollIsWithinComponent(component) {
+  const scrollIsWithinComponent = (component) => {
     return window.scrollY >= component.startY && window.scrollY < component.endY
   }
 

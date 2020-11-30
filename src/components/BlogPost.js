@@ -1,7 +1,6 @@
 import React from 'react'
 
 const BlogPost = ({ post }) => {
-
   const displayContent = () => {
     const content = post.content.replace(/<[^>]*>?/gm, '')
     const preview = content.split(" ").splice(0,50).join(" ")
