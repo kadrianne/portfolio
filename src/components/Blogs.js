@@ -4,16 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMedium } from '@fortawesome/free-brands-svg-icons'
 
 const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoaded }) => {
-
   const [posts, setPosts] = useState([])
+
+  const displayPosts = () => {
+    return posts.map(post => <BlogPost key={post.id} post={post} />)
+  }
 
   useEffect(() => {
     if (componentLoaded.projects) {
       addHeight((prevState) => ({ ...prevState,
           blogs: {
             startY: prevState.projects.endY, 
-            height: blogsRef.current.clientHeight,
-            endY: prevState.projects.endY + blogsRef.current.clientHeight
+            height: blogsRef.current.offsetHeight + 40,
+            endY: prevState.projects.endY + blogsRef.current.offsetHeight + 40
           }
         })
       )
@@ -32,10 +35,6 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
       .then(data => {setPosts(data.items)
       })
   }, [])
-
-  const displayPosts = () => {
-    return posts.map(post => <BlogPost post={post} />)
-  }
 
   return (
     <>

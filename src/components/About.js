@@ -3,13 +3,13 @@ import Image from './Image'
 import { logos, kristine } from '../assets'
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
-  
   const [imagesLoaded, setImagesLoaded] = useState(0)
 
-  function handleLoad() {
-    console.log('about handleLoad')
+  const handleLoad = () => {
     setImagesLoaded(imagesLoaded + 1)
   }
+
+  const renderLogos = () => logos.map(logo => <Image key={logo.title} src={logo.image} title={logo.title} handleLoad={handleLoad} />)
 
   useEffect(() => {
     console.log(imagesLoaded, 'about imagesLoaded')
@@ -17,8 +17,8 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
       addHeight((prevState) => ({ ...prevState,
         about: {
           startY: 0, 
-          height: aboutRef.current.clientHeight,
-          endY: aboutRef.current.clientHeight
+          height: aboutRef.current.offsetHeight + 40,
+          endY: aboutRef.current.offsetHeight + 40
         }
       }))
       setComponentLoaded({...componentLoaded, about: true})
@@ -30,8 +30,6 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
       setComponentLoaded({...componentLoaded, about: true})
     }
   }, [heights.about])
-
-  const renderLogos = () => logos.map(logo => <Image src={logo.image} title={logo.title} handleLoad={handleLoad} />)
 
   return (
     <>

@@ -4,26 +4,6 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponentLoaded }) => {
-
-  useEffect(() => {
-    if (componentLoaded.blogs) {
-      addHeight((prevState) => ({ ...prevState,
-          contact: {
-            startY: prevState.blogs.endY, 
-            height: contactRef.current.clientHeight,
-            endY: prevState.blogs.endY + contactRef.current.clientHeight
-          }
-        })
-      )
-    }
-  }, [componentLoaded.blogs])
-
-  useEffect(() => {
-    if (heights.contact) {
-      setComponentLoaded({...componentLoaded, contact: true})
-    }
-  }, [heights.contact])
-
   const links = [
     {type: 'email', icon: faEnvelope, href: 'mailto:kristine.a.du@gmail.com', info: 'kristine.a.du@gmail.com'},
     {type: 'linkedIn', icon: faLinkedin, href: 'https://linkedin.com/in/kristine-du', info: 'kristine du'},
@@ -40,6 +20,25 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
       </li>
     ))
   }
+
+  useEffect(() => {
+    if (componentLoaded.blogs) {
+      addHeight((prevState) => ({ ...prevState,
+          contact: {
+            startY: prevState.blogs.endY, 
+            height: contactRef.current.offsetHeight + 40,
+            endY: prevState.blogs.endY + contactRef.current.offsetHeight + 40
+          }
+        })
+      )
+    }
+  }, [componentLoaded.blogs])
+
+  useEffect(() => {
+    if (heights.contact) {
+      setComponentLoaded({...componentLoaded, contact: true})
+    }
+  }, [heights.contact])
 
   return (
     <>
