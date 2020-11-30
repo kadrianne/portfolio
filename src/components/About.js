@@ -37,6 +37,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
     <>
     <section ref={aboutRef} className='about top-level'>
         <h2>about</h2>
+        <img src={kristine} alt='kristine' className='profile' onLoad={handleLoad}></img>
         <section className='left kristine'>
           <h3>kristine du</h3>
           <ul>
@@ -54,7 +55,6 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
             <li>open to full-time & freelance opportunities</li>
           </ul>
         </section>
-        <img src={kristine} alt='kristine' className='profile' onLoad={handleLoad}></img>
         <section className='skills'>
           <h3>skills</h3>
           <div className='skills-content'>

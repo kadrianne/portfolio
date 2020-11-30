@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
 
 import '../styles/mystyles.scss'
 
@@ -66,6 +68,16 @@ const App = () => {
     }
   }
 
+  function handleClick(element){
+    console.log(element)
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: element ? element.offsetTop : 0
+      })
+    }, 100)
+  }
+
   function scrollIsWithinComponent(component) {
     return window.scrollY >= component.startY && window.scrollY < component.endY
   }
@@ -87,8 +99,10 @@ const App = () => {
         projectsRef={projectsRef}
         blogsRef={blogsRef}
         contactRef={contactRef}
+        handleClick={handleClick}
       />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
+        {window.scrollY > 0 && <FontAwesomeIcon className='scroll-to-top' icon={faArrowCircleUp} size='2x' onClick={() => handleClick()} />}
         <About aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Projects projectsRef={projectsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />

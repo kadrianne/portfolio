@@ -78,10 +78,44 @@ section.top-level {
 h1 {
   font-family: $roboto;
   font-size: $font-xxxxxl;
-  margin: 20px 40px;
-  margin-top: 150px;
+  margin: 40% 50% 40% 40px;
   font-weight: 700;
   text-shadow: 1px 2px $brown-light;
+}
+
+@media screen and (max-width: $desktop) {
+  #gatsby-focus-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info {
+    height: 40%;
+    width: 100%;
+    position: relative;
+  }
+
+  main {
+    width: 100%;
+    position: relative;
+  }
+
+  h1 {
+    margin: 60px 40px;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  h1 {
+    font-size: $font-xxxxl;
+    margin: 40px;
+  }
+
+  nav {
+    a {
+      font-size: $font-small;
+    }
+  }
 }
 
 h2 {
@@ -133,6 +167,18 @@ h4 {
   li {
     border-right: double 5px $white;
   }
+}
+
+.scroll-to-top {
+  display: block;
+  background-color: transparent;
+  border: none;
+  opacity: .8;
+  color: $beige-lighter;
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+  cursor: pointer;
 }
 
 .about {
@@ -196,6 +242,24 @@ h4 {
     .currently {
       grid-row: 4;
       grid-column: 1 / span 2;
+    }
+  }
+
+}
+
+@media screen and (max-width: $tablet) {
+  .about {
+    display: flex;
+    flex-direction: column;
+
+    img.logo {
+      height: 50px;
+    }
+
+    .skills-content {
+      span {
+        width: 150px;
+      }
     }
   }
 }
