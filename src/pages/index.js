@@ -107,7 +107,6 @@ const App = () => {
         handleClick={handleClick}
       />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
-        {console.log(window.scrollY)}
         <FontAwesomeIcon className='scroll-to-top' icon={faArrowCircleUp} size='2x' onClick={() => handleClick()} />
         <About aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Projects projectsRef={projectsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
