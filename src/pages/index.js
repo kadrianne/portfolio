@@ -69,7 +69,6 @@ const App = () => {
   }
 
   const handleClick = (element) => {
-    console.log(element)
     setTimeout(() => {
       window.scrollTo({
         behavior: 'smooth',
@@ -113,7 +112,7 @@ const App = () => {
         <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Contact contactRef={contactRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
       </main>
-      { width <=1024 && <footer className='device' style={{backgroundColor: `rgb(${red},${green},${blue})`}}>© {new Date().getFullYear()}</footer>}
+      { width <=1024 & width !== 0 ? <footer className='device' style={{backgroundColor: `rgb(${red},${green},${blue})`}}>© {new Date().getFullYear()}</footer> : null}
     </>
   )
 }
