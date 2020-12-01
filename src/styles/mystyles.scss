@@ -178,6 +178,8 @@ h4 {
   position: fixed;
   right: 35px;
   bottom: 35px;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
 }
 
@@ -247,7 +249,7 @@ h4 {
 
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: $mobile) {
   .about {
     display: flex;
     flex-direction: column;
@@ -275,6 +277,7 @@ h4 {
 
 .project-cards {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -284,11 +287,7 @@ h4 {
   display: flex;
   width: 92%;
 
-  .app-image {
-    width: 50%;
-  }
-
-  .project-info {
+  .app-image, .project-info {
     width: 50%;
   }
   
@@ -303,7 +302,6 @@ h4 {
       width: 60%;
     }
   }
-  
 
   .links {
     display: flex;
@@ -346,9 +344,6 @@ h4 {
   }
 
   @media screen and (max-width: $fullhd){
-    // h4 {
-    //   font-size: $font-xl;
-    // }
     .links {
       font-size: $font-baseline;
       li {
@@ -356,33 +351,57 @@ h4 {
       }
     }
   }
-  
-  // @media screen and (max-width: $widescreen) {
-  //   &.web {
-  //     width: 100%;
-  //     // flex-direction: row;
-      
-  //     // img {
-  //     //   display: block;
-  //     //   max-width: 100%;
-  //     //   max-height: 25%;
-  //     //   width: auto;
-  //     //   height: auto;
-  //     //   // height: auto;
-  //     //   // min-height: 100%;
-  //     //   padding-right: 20px;
-  //     // }
-  //   }
-  // }
+}
+
+.divider {
+  // border-bottom: solid 1px $white;
+  // width: 50%;
+  font-size: $font-xl;
+  align-self: center;
+}
+
+@media screen and (max-width: $mobile) {
+  .project-card {
+    margin: 10px auto 50px auto;
+    flex-direction: column;
+    width: 100%;
+    font-size: $font-baseline;
+
+    .app-image, .project-info {
+      width: 100%;
+    }
+
+    img {
+      padding: 0;
+    }
+
+    .links {
+      font-size: $font-small;
+      li {
+        padding-right: 15px;
+      }
+    }
+  }
 }
 
 article {
-  border-bottom: double 3px $white;
+  border-top: double 3px $white;
   padding: 25px 50px;
-  margin: 0 50px 25px 50px;
+  margin: 0 50px;
 
   .post-preview {
     font-size: $font-baseline;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  article {
+    margin: 0;
+    padding: 10px 20px;
+    
+    .post-preview {
+      font-size: $font-small;
+    }
   }
 }
 
@@ -401,6 +420,12 @@ article {
     &:hover {
       color: $beige-light;
     }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .contact-links {
+    padding: 0;
   }
 }
 

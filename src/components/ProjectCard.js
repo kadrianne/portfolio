@@ -23,6 +23,7 @@ const ProjectCard = ({ project, handleLoad }) => {
   }
 
   return (
+    <>
     <section className={`project-card ${isMobile ? 'mobile' : 'web'}`}>
       <div className='app-image'><img src={image} onLoad={handleLoad}></img></div>
       <div className='project-info'>
@@ -57,6 +58,7 @@ const ProjectCard = ({ project, handleLoad }) => {
         {displayTech(tech)}
       </div>
     </section>
+    </>
   )
 }
 
