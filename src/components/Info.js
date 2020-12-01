@@ -4,7 +4,7 @@ import Nav from './Nav'
 const Info = ({ width, red, green, blue, aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
   return (
       <aside className='info'>
-        { width <= 1024
+        { width <= 1024 && width !== 0
           ? <>
             <header style={{color: `rgb(${red},${green},${blue})`}}>
               <h1>kristine codes</h1>
