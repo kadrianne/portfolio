@@ -78,7 +78,7 @@ section.top-level {
 h1 {
   font-family: $roboto;
   font-size: $font-xxxxxl;
-  margin: 40% 50% 40% 40px;
+  margin: 40% 50% 0 40px;
   font-weight: 700;
   text-shadow: 1px 2px $brown-light;
 }
@@ -95,23 +95,28 @@ h1 {
     position: relative;
   }
 
+  nav {
+    margin: 10px 40px;
+  }
+
   main {
     width: 100%;
     position: relative;
   }
 
   h1 {
-    margin: 60px 40px;
+    margin: 20px 40px;
   }
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: $mobile) {
   h1 {
     font-size: $font-xxxxl;
-    margin: 40px;
   }
 
   nav {
+    margin: 0px 40px;
+
     a {
       font-size: $font-small;
     }
@@ -240,7 +245,7 @@ h4 {
     }
   }
 
-  @media screen and (max-width: $widescreen){
+  @media screen and (max-width: $mobile){
     .currently {
       grid-row: 4;
       grid-column: 1 / span 2;
@@ -458,5 +463,12 @@ article {
 }
 
 footer {
-  margin: 25px 40px;
+  padding: 25px 40px;
+  width: 100%;
+  
+  &.device {
+    height: 90px;
+    border-top: double 3px $white;
+    color: $white;
+  }
 }

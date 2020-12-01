@@ -11,7 +11,7 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
   }
 
   useEffect(() => {
-    if (componentLoaded.projects) {
+    if (componentLoaded.projects && posts.length > 0) {
       addHeight((prevState) => ({ ...prevState,
           blogs: {
             startY: prevState.projects.endY, 
@@ -21,7 +21,7 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
         })
       )
     }
-  }, [componentLoaded.projects])
+  }, [componentLoaded.projects, posts])
 
   useEffect(() => {
     if (heights.blogs) {
@@ -32,8 +32,7 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
   useEffect(() => {
     fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40kristine-a-du')
       .then(response => response.json())
-      .then(data => {setPosts(data.items)
-      })
+      .then(data => setPosts(data.items))
   }, [])
 
   return (

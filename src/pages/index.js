@@ -22,6 +22,7 @@ const componentColors = {
 }
 
 const App = () => {
+  const [width, setWidth] = useState(0)
   const [heights, addHeight] = useState({})
   const [componentLoaded, setComponentLoaded] = useState({
     about: false,
@@ -82,6 +83,10 @@ const App = () => {
   }
 
   useEffect(() => {
+    setWidth(window.screen.width)
+  }, [])
+
+  useEffect(() => {
     if (Object.keys(heights).length === 4) {
       window.addEventListener('scroll', handleColors)
     }
@@ -91,6 +96,7 @@ const App = () => {
     <>
       <SEO title="kristine codes" />
       <Info
+        width={width}
         red={red}
         green={green}
         blue={blue}
@@ -107,6 +113,7 @@ const App = () => {
         <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Contact contactRef={contactRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
       </main>
+      { width <=1024 && <footer className='device' style={{backgroundColor: `rgb(${red},${green},${blue})`}}>© {new Date().getFullYear()}</footer>}
     </>
   )
 }
