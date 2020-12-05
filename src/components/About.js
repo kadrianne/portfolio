@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Image from './Image'
+import Image from './ImageLogos'
 import { logos, kristine } from '../assets'
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
@@ -9,7 +9,8 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
     setImagesLoaded(imagesLoaded + 1)
   }
 
-  const renderLogos = () => logos.map(logo => <Image key={logo.title} src={logo.image} title={logo.title} handleLoad={handleLoad} />)
+  // console.log(data.allImageSharp.edges)
+  // const renderLogos = () => logos.map((logo, index) => <Image key={index} handleLoad={handleLoad} />)
 
   useEffect(() => {
     console.log(imagesLoaded, 'about imagesLoaded')
@@ -56,7 +57,8 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
         <section className='skills'>
           <h3>skills</h3>
           <div className='skills-content'>
-            {renderLogos()}
+            {/* {renderLogos()} */}
+            <Image handleLoad={handleLoad} />
           </div>
         </section>
     </section>

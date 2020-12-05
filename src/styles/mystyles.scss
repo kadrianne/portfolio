@@ -229,19 +229,11 @@ h4 {
     flex-wrap: wrap;
     justify-content: space-around;
 
-    span {
+    .logo {
       width: 250px;
-    }
-  }
-
-  img.logo {
-    display: block;
-    height: 100px;
-    margin: 25px auto;
-    transition: transform .2s;
-
-    &:hover {
-      transform: scale(1.1);
+      text-align: center;
+      margin: 25px auto;
+      line-height: 0;
     }
   }
 
