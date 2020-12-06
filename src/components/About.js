@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Image from './Image'
-import { logos, kristine } from '../assets'
+import ImageLogos from './ImageLogos'
+import ProfileImage from './ProfileImage'
 
 const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
   const [imagesLoaded, setImagesLoaded] = useState(0)
@@ -8,8 +8,6 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
   const handleLoad = () => {
     setImagesLoaded(imagesLoaded + 1)
   }
-
-  const renderLogos = () => logos.map(logo => <Image key={logo.title} src={logo.image} title={logo.title} handleLoad={handleLoad} />)
 
   useEffect(() => {
     console.log(imagesLoaded, 'about imagesLoaded')
@@ -35,7 +33,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
     <>
     <section ref={aboutRef} className='about top-level'>
         <h2>about</h2>
-        <img src={kristine} alt='kristine' className='profile' onLoad={handleLoad}></img>
+        <div className='profile'><ProfileImage handleLoad={handleLoad} /></div>
         <section className='left kristine'>
           <h3>kristine du</h3>
           <ul>
@@ -56,7 +54,7 @@ const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoad
         <section className='skills'>
           <h3>skills</h3>
           <div className='skills-content'>
-            {renderLogos()}
+            <ImageLogos handleLoad={handleLoad} />
           </div>
         </section>
     </section>

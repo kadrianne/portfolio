@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faVideo } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { graphql } from 'gatsby'
+import ProjectImage from './ProjectImage'
 
 const ProjectCard = ({ project, handleLoad }) => {
   const {
@@ -25,7 +27,7 @@ const ProjectCard = ({ project, handleLoad }) => {
   return (
     <>
     <section className={`project-card ${isMobile ? 'mobile' : 'web'}`}>
-      <div className='app-image'><img src={image} onLoad={handleLoad}></img></div>
+      <div className='app-image'><ProjectImage isMobile={isMobile} image={image} handleLoad={handleLoad} /></div>
       <div className='project-info'>
         <h4 className='project-name'>
           { link 
@@ -61,5 +63,17 @@ const ProjectCard = ({ project, handleLoad }) => {
     </>
   )
 }
+
+export const projectsQuery = graphql`
+  query {
+    pickyeats: file(relativePath: { eq: "pickyeats-cover.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 export default ProjectCard
