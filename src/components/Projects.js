@@ -10,12 +10,12 @@ const Projects = ({ heights, addHeight, projectsRef, componentLoaded, setCompone
   }
 
   const displayProjects = (key) => {
-    return projectData[key].map(project => <ProjectCard key={project.id} project={project} handleLoad={handleLoad} />)
+    return projectData()[key].map(project => <ProjectCard key={project.id} project={project} handleLoad={handleLoad} />)
   }
 
   useEffect(() => {
     console.log(imagesLoaded, 'projects imagesLoaded')
-    if (componentLoaded.about && imagesLoaded === Object.values(projectData).flat().length) {
+    if (componentLoaded.about && imagesLoaded === Object.values(projectData()).flat().length) {
       addHeight((prevState) => ({ ...prevState, 
         projects: {
           startY: prevState.about.endY, 

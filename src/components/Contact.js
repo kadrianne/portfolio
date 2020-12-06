@@ -11,8 +11,8 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
   ]
 
   const displayLinks = () => {
-    return links.map(link => (
-      <li>
+    return links.map((link, index) => (
+      <li key={index}>
         <a href={link.href} target='_blank'>
           <FontAwesomeIcon className='icon beige' icon={link.icon} />
           {link.info}
@@ -44,7 +44,7 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
     <>
     <section ref={contactRef} className='contact top-level last'>
         <h2>contact</h2>
-        <ul class='contact-links'>
+        <ul className='contact-links'>
           {displayLinks()}
         </ul>
     </section>
