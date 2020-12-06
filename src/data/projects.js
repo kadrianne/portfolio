@@ -1,5 +1,3 @@
-import { minesweeper, pickyeats, weddingWebsite, cfd } from '../assets'
-
 const projects = () => {
   return {
     personal: [{
@@ -16,7 +14,7 @@ const projects = () => {
     {
       id: 2,
       title: 'Modern Minesweeper',
-      image: minesweeper,
+      image: 'minesweeper',
       link: 'https://modernminesweeper.firebaseapp.com/',
       frontend: 'https://github.com/kadrianne/modern-minesweeper',
       backend: 'https://github.com/kadrianne/minesweeper-express-backend',
@@ -28,7 +26,7 @@ const projects = () => {
     {
       id: 3,
       title: 'Kristine & Samuel\'s Wedding',
-      image: weddingWebsite,
+      image: 'weddingWebsite',
       link: 'https://kristineandsamuel.com/',
       frontend: 'https://github.com/kadrianne/wedding-website',
       backend: 'https://github.com/kadrianne/wedding-website-backend',
@@ -40,7 +38,7 @@ const projects = () => {
     group: [{
       id: 4,
       title: 'Code for Denver Website',
-      image: cfd,
+      image: 'cfd',
       frontend: 'https://github.com/codefordenver/codefordenver.org/tree/convert-to-jekyll',
       tech: ['JavaScript', 'HTML', 'CSS', 'Ruby', 'Jekyll'],
       description: 'Ongoing open-source project for the redesign of Code for Denver\'s existing website.',

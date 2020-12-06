@@ -186,6 +186,7 @@ h4 {
   width: 36px;
   height: 36px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .about {
@@ -211,12 +212,19 @@ h4 {
     grid-row: 3;
   }
   
-  img.profile {
+  .profile {
     width: 90%;
     border: solid 1px $white;
     grid-column: 2;
     grid-row: 2 / span 2;
     justify-self: end;
+
+    .gatsby-image-wrapper {
+      height: 100%;
+    }
+    .gatsby-image-wrapper > img {
+      z-index: 100
+    }
   }
   
   .skills {
@@ -236,14 +244,6 @@ h4 {
       line-height: 0;
     }
   }
-
-  @media screen and (max-width: $mobile){
-    .currently {
-      grid-row: 4;
-      grid-column: 1 / span 2;
-    }
-  }
-
 }
 
 @media screen and (max-width: $mobile) {
@@ -251,12 +251,22 @@ h4 {
     display: flex;
     flex-direction: column;
 
-    img.profile {
+    .profile {
       width: 100%;
+      height: 400px;
+
+      .gatsby-image-wrapper > img {
+        height: 100%;
+      }
     }
 
     img.logo {
       height: 50px;
+    }
+
+    .currently {
+      grid-row: 4;
+      grid-column: 1 / span 2;
     }
 
     .skills-content {
@@ -287,18 +297,14 @@ h4 {
   .app-image, .project-info {
     width: 50%;
   }
-  
-  img {
-    padding: 10px 20px 0 0;
+
+  .gatsby-image-wrapper {
+    margin: 10px 20px 0 0;
   }
 
-  &.mobile {
-    img {
-      display: block;
-      margin: auto;
-      width: 60%;
-    }
-  }
+  .mobile {
+    width: 60%;
+    margin: auto;
 
   .links {
     display: flex;
@@ -348,13 +354,6 @@ h4 {
       }
     }
   }
-}
-
-.divider {
-  // border-bottom: solid 1px $white;
-  // width: 50%;
-  font-size: $font-xl;
-  align-self: center;
 }
 
 @media screen and (max-width: $mobile) {
