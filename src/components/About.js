@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react'
 import ImageLogos from './ImageLogos'
 import ProfileImage from './ProfileImage'
 
-const About = ({ heights, addHeight, aboutRef, componentLoaded, setComponentLoaded }) => {
+const About = ({ heights, addHeight, infoRef, aboutRef, componentLoaded, setComponentLoaded }) => {
   const [imagesLoaded, setImagesLoaded] = useState(0)
 
   const handleLoad = () => {
     setImagesLoaded(imagesLoaded + 1)
   }
 
+  console.log('scrollY', window.scrollY)
   useEffect(() => {
+    const headerOffset = window.innerWidth >= 1024 ? 0 : infoRef.current.offsetHeight
     console.log(imagesLoaded, 'about imagesLoaded')
     if (imagesLoaded === 15) {
       addHeight((prevState) => ({ ...prevState,
         about: {
           startY: 0, 
           height: aboutRef.current.offsetHeight + 40,
-          endY: aboutRef.current.offsetHeight + 40
+          endY: headerOffset + aboutRef.current.offsetHeight + 40
         }
       }))
       setComponentLoaded({...componentLoaded, about: true})

@@ -1,7 +1,7 @@
 import React from 'react'
 import resume from '../assets/kristine-du-resume.pdf'
 
-const Info = ({ aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
+const Nav = ({ aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <li><a onClick={() => handleClick(aboutRef.current)}>about</a></li>
@@ -13,4 +13,4 @@ const Info = ({ aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
   )
 }
 
-export default Info
+export default Nav

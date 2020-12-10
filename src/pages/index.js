@@ -37,6 +37,7 @@ const App = () => {
   const [green, setGreen] = useState(startingGreen)
   const [blue, setBlue] = useState(startingBlue)
 
+  const infoRef = useRef(null)
   const aboutRef = useRef(null)
   const projectsRef = useRef(null)
   const blogsRef = useRef(null)
@@ -72,7 +73,11 @@ const App = () => {
     setTimeout(() => {
       window.scrollTo({
         behavior: 'smooth',
-        top: element ? element.offsetTop : 0
+        top: element === undefined
+          ? 0 
+          : window.innerWidth >= 1024 
+            ? element.offsetTop
+            : element.offsetTop + infoRef.current.offsetHeight
       })
     }, 100)
   }
@@ -99,6 +104,7 @@ const App = () => {
         red={red}
         green={green}
         blue={blue}
+        infoRef={infoRef}
         aboutRef={aboutRef}
         projectsRef={projectsRef}
         blogsRef={blogsRef}
@@ -107,7 +113,7 @@ const App = () => {
       />
       <main style={{backgroundColor: `rgb(${red},${green},${blue})`}}>
         <FontAwesomeIcon className='scroll-to-top' icon={faArrowCircleUp} size='2x' onClick={() => handleClick()} />
-        <About aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
+        <About infoRef={infoRef} aboutRef={aboutRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Projects projectsRef={projectsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Blogs blogsRef={blogsRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
         <Contact contactRef={contactRef} heights={heights} addHeight={addHeight} componentLoaded={componentLoaded} setComponentLoaded={setComponentLoaded} />
