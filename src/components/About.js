@@ -9,10 +9,8 @@ const About = ({ heights, addHeight, infoRef, aboutRef, componentLoaded, setComp
     setImagesLoaded(imagesLoaded + 1)
   }
 
-  console.log('scrollY', window.scrollY)
   useEffect(() => {
     const headerOffset = window.innerWidth >= 1024 ? 0 : infoRef.current.offsetHeight
-    console.log(imagesLoaded, 'about imagesLoaded')
     if (imagesLoaded === 15) {
       addHeight((prevState) => ({ ...prevState,
         about: {
