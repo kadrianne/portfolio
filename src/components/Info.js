@@ -1,9 +1,9 @@
 import React from 'react'
 import Nav from './Nav'
 
-const Info = ({ width, red, green, blue, aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
+const Info = ({ width, red, green, blue, infoRef, aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
   return (
-      <aside className='info'>
+      <aside ref={infoRef} className='info'>
         { width <= 1024 && width !== 0
           ? <>
             <header style={{color: `rgb(${red},${green},${blue})`}}>
