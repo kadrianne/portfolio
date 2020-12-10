@@ -11,14 +11,14 @@ const About = ({ heights, addHeight, infoRef, aboutRef, componentLoaded, setComp
 
   console.log('scrollY', window.scrollY)
   useEffect(() => {
-    const startY = window.innerWidth >= 1024 ? 0 : infoRef.current.offsetHeight
+    const headerOffset = window.innerWidth >= 1024 ? 0 : infoRef.current.offsetHeight
     console.log(imagesLoaded, 'about imagesLoaded')
     if (imagesLoaded === 15) {
       addHeight((prevState) => ({ ...prevState,
         about: {
-          startY, 
+          startY: 0, 
           height: aboutRef.current.offsetHeight + 40,
-          endY: startY + aboutRef.current.offsetHeight + 40
+          endY: headerOffset + aboutRef.current.offsetHeight + 40
         }
       }))
       setComponentLoaded({...componentLoaded, about: true})
