@@ -14,7 +14,6 @@ const Projects = ({ heights, addHeight, projectsRef, componentLoaded, setCompone
   }
 
   useEffect(() => {
-    console.log(imagesLoaded, 'projects imagesLoaded')
     if (componentLoaded.about && imagesLoaded === Object.values(projectData()).flat().length) {
       addHeight((prevState) => ({ ...prevState, 
         projects: {
