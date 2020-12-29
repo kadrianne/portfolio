@@ -464,3 +464,19 @@ footer {
     color: $white;
   }
 }
+
+form {
+  padding: 0 50px;
+
+  .label {
+    color: $white;
+  }
+
+  .form-submitted {
+    font-weight: 600;
+  }
+
+  p {
+    padding-bottom: 10px;
+  }
+}
