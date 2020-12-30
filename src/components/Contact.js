@@ -4,6 +4,8 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import useFormField from '../hooks/useFormField'
 
+const functionURL = 'https://lava-indri-1072.twil.io/send-email'
+
 const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponentLoaded }) => {
   const links = [
     {type: 'email', icon: faEnvelope, href: 'mailto:kristine.a.du@gmail.com', info: 'kristine.a.du@gmail.com'},
@@ -11,11 +13,13 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
     {type: 'google voice', icon: faPhone, href: 'tel: 720-441-3150', info: '(720) 441-3150'}
   ]
 
-  const [name, handleName] = useFormField('')
-  const [email, handleEmail] = useFormField()
-  const [subject, handleSubject] = useFormField()
-  const [message, handleMessage] = useFormField()
+  const [name, handleName, setName] = useFormField()
+  const [email, handleEmail, setEmail] = useFormField()
+  const [subject, handleSubject, setSubject] = useFormField()
+  const [message, handleMessage, setMessage] = useFormField()
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [fieldIsBlank, setFieldIsBlank] = useState(false)
+  const [response, setResponse] = useState('')
 
   const displayLinks = () => {
     return links.map((link, index) => (
@@ -49,14 +53,32 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setIsSubmitted(true)
-    console.log(name, email, subject, message)
-
+    if (name && email && subject && message){
+      setIsSubmitted(true)
+      fetch(functionURL, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, subject, message })
+      })
+        .then(response => response.json())
+        .then(response => {
+          setResponse(response.message)
+        })
+    } else {
+      setFieldIsBlank(true)
+    }
   }
 
   const handleReset = (event) => {
     event.preventDefault()
+    setName('')
+    setEmail('')
+    setSubject('')
+    setMessage('')
     setIsSubmitted(false)
+    setFieldIsBlank(false)
   }
 
   return (
@@ -69,38 +91,75 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
         <form>
           {isSubmitted
           ? <>
-              <h4 class='form-submitted'>Thanks for reaching out, {name.split(' ')[0]}.</h4>
-              <p>I will be in touch with you soon!</p>
-              <button onClick={handleReset} class="button">Back to Form</button>
+              <h4 className='form-submitted'>Thanks for reaching out, {name.split(' ')[0]}.</h4>
+              <p>{response}</p>
+              <button onClick={handleReset} className="button is-link is-light">Back to Form</button>
             </>
           : <>
-            <div class="field">
-              <label class="label">Name</label>
-              <div class="control">
-                <input onChange={handleName} value={name} required class="input" type="text" placeholder="e.g Jane Li" />
+            <div className="field">
+              <label className="label">Name</label>
+              <div className="control">
+                <input
+                  onChange={(event) => {
+                    handleName(event)
+                    setFieldIsBlank(false)
+                  }}
+                  value={name}
+                  className="input"
+                  type="text"
+                  placeholder="e.g Jane Li"
+                />
               </div>
             </div>
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control">
-                <input onChange={handleEmail} value={email} required class="input" type="email" placeholder="e.g. jane.li@gmail.com" />
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input 
+                  onChange={(event) => {
+                    handleEmail(event)
+                    setFieldIsBlank(false)
+                  }}
+                  value={email}
+                  className="input"
+                  type="email"
+                  placeholder="e.g. jane.li@gmail.com"
+                />
               </div>
             </div>
-            <div class="field">
-              <label class="label">Subject</label>
-              <div class="control">
-                <input onChange={handleSubject} value={subject}class="input" type="text" placeholder="e.g. Let's Connect!" />
+            <div className="field">
+              <label className="label">Subject</label>
+              <div className="control">
+                <input
+                  onChange={(event) => {
+                    handleSubject(event)
+                    setFieldIsBlank(false)
+                  }}
+                  value={subject}
+                  className="input"
+                  type="text"
+                  placeholder="e.g. Let's Connect!"
+                />
               </div>
             </div>
-            <div class="field">
-              <label class="label">Message</label>
-              <div class="control">
-                <textarea onChange={handleMessage} value={message} required class="textarea" />
+            <div className="field">
+              <label className="label">Message</label>
+              <div className="control">
+                <textarea
+                  onChange={(event) => {
+                    handleMessage(event)
+                    setFieldIsBlank(false)
+                  }}
+                  value={message}
+                  className="textarea"
+                  placeholder="e.g. Great project idea..."
+                />
               </div>
             </div>
-            <div class="control">
-              <button onClick={handleSubmit} class="button is-link">Submit</button>
+            <div className="control">
+              <button onClick={handleSubmit} className="button is-link">Submit</button>
+              <button onClick={handleReset} class="button is-link is-light">Reset</button>
             </div>
+            {fieldIsBlank && <p className='error'>All fields are required.</p>}
             </>
           }
         </form>
