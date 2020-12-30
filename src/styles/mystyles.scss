@@ -464,3 +464,38 @@ footer {
     color: $white;
   }
 }
+
+form {
+  padding: 0 50px;
+
+  .label {
+    color: $white;
+  }
+
+  .form-submitted {
+    font-weight: 600;
+  }
+
+  p {
+    margin: 10px 0;
+    padding: 5px;
+  }
+
+  .error {
+    background-color: $white;
+    color: $brown;
+    border-radius: 4px;
+  }
+
+  button {
+    font-family: $family-serif;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  form {
+    padding: 10px 0px;
+  }
+}
