@@ -36,7 +36,7 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "npx gatsby build",
+    "build": "npm i && npx gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
