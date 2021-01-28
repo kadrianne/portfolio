@@ -30,6 +30,14 @@ const ProjectImage = ({ isMobile, image, handleLoad }) => {
           }
         }
       },
+      trashPanda: file(relativePath: {eq: "projects/trash-panda.png"}) {
+        base
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
       cfd: file(relativePath: {eq: "projects/cfd.png"}) {
         base
         childImageSharp {
@@ -37,7 +45,7 @@ const ProjectImage = ({ isMobile, image, handleLoad }) => {
             ...GatsbyImageSharpFluid
           }
         }
-      }
+      },
     }
   `)
   
