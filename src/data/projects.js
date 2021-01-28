@@ -37,6 +37,18 @@ const projects = () => {
     }],
     group: [{
       id: 4,
+      title: 'Trash Panda',
+      image: 'trashPanda',
+      link: 'https://trash-panda-shehacks.web.app/',
+      frontend: 'https://github.com/tiffanynk/trash-panda-fe',
+      backend: 'https://github.com/tiffanynk/trash-panda-be',
+      tech: ['React', 'Node.js', 'Express.js', 'SASS', 'CSS', 'Bootstrap', 'Google Maps', 'Google Firestore'],
+      demo: 'https://www.youtube.com/watch?v=-CKjlRJCqoM&feature=youtu.be',
+      description: 'She/Hacks 2020 Top 20 Teams & Best Use of Google Cloud – No one likes a litterer! Trash Panda helps users find the nearest recycling and trash bin locations. Take it one step further and earn points for every time you recycle or add a new location to the map.',
+      isMobile: true
+    },
+    {
+      id: 5,
       title: 'Code for Denver Website',
       image: 'cfd',
       frontend: 'https://github.com/codefordenver/codefordenver.org/tree/convert-to-jekyll',
