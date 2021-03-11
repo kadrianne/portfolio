@@ -54,6 +54,7 @@ nav {
 
 main {
   font-family: $family-serif;
+  backface-visibility: hidden;
   color: $white;
   font-size: $font-large;
   position: absolute;
