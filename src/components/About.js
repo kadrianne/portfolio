@@ -46,9 +46,9 @@ const About = ({ heights, addHeight, infoRef, aboutRef, componentLoaded, setComp
         <section className='right currently'>
           <h3>status</h3>
           <ul>
-            <li>software engineering coach @ Flatiron School</li>
-            <li>project lead with Code for Denver</li>
-            <li>open to full-time & freelance opportunities</li>
+            <li>software engineer @ Handshake</li>
+            <li>project lead w/ Code for Denver</li>
+            <li>volunteer w/ ChickTech & ACT-W</li>
           </ul>
         </section>
         <section className='skills'>
