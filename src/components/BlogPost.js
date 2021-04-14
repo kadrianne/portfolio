@@ -10,7 +10,7 @@ const BlogPost = ({ post }) => {
   return (
     <article>
       <h4>
-        <a href={post.link} target="_blank">
+        <a href={post.link} target="_blank" rel="noreferrer">
         {post.title}
         </a>
       </h4>
