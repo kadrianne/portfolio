@@ -31,26 +31,26 @@ const ProjectCard = ({ project, handleLoad }) => {
       <div className='project-info'>
         <h4 className='project-name'>
           { link 
-            ? <a href={link} target='_blank'>{title} <FontAwesomeIcon className='brown' icon={faLink} size='xs' /></a>
+            ? <a href={link} target='_blank' rel='noreferrer'>{title} <FontAwesomeIcon className='brown' icon={faLink} size='xs' /></a>
             : title
           }
         </h4>
         <ul className='links'>
           { demo &&
             <li>
-              <a href={demo} target='_blank'>
+              <a href={demo} target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faVideo} /> demo
               </a>
             </li>
           }
           <li>
-            <a href={frontend} target='_blank'>
+            <a href={frontend} target='_blank' rel='noreferrer'>
               <FontAwesomeIcon icon={faGithub} /> front-end
             </a>
           </li>
           { backend &&
             <li>
-              <a href={backend} target='_blank'>
+              <a href={backend} target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faGithub} /> back-end
               </a>
             </li>

@@ -24,7 +24,7 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
   const displayLinks = () => {
     return links.map((link, index) => (
       <li key={index}>
-        <a href={link.href} target='_blank'>
+        <a href={link.href} target='_blank' rel='noreferrer'>
           <FontAwesomeIcon className='icon beige' icon={link.icon} />
           {link.info}
         </a>
@@ -97,67 +97,75 @@ const Contact = ({ heights, addHeight, contactRef, componentLoaded, setComponent
             </>
           : <>
             <div className="field">
-              <label className="label">Name</label>
-              <div className="control">
-                <input
-                  onChange={(event) => {
-                    handleName(event)
-                    setFieldIsBlank(false)
-                  }}
-                  value={name}
-                  className="input"
-                  type="text"
-                  placeholder="e.g Jane Li"
-                />
-              </div>
+              <label htmlFor="name-field" className="label">
+                Name
+                <div id="name-field" className="control">
+                  <input
+                    onChange={(event) => {
+                      handleName(event)
+                      setFieldIsBlank(false)
+                    }}
+                    value={name}
+                    className="input"
+                    type="text"
+                    placeholder="e.g Jane Li"
+                  />
+                </div>
+              </label>
             </div>
             <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input 
-                  onChange={(event) => {
-                    handleEmail(event)
-                    setFieldIsBlank(false)
-                  }}
-                  value={email}
-                  className="input"
-                  type="email"
-                  placeholder="e.g. jane.li@gmail.com"
-                />
-              </div>
+              <label htmlFor="email-field" className="label">
+                Email
+                <div id="email-field" className="control">
+                  <input 
+                    onChange={(event) => {
+                      handleEmail(event)
+                      setFieldIsBlank(false)
+                    }}
+                    value={email}
+                    className="input"
+                    type="email"
+                    placeholder="e.g. jane.li@gmail.com"
+                  />
+                </div>
+              </label>
             </div>
             <div className="field">
-              <label className="label">Subject</label>
-              <div className="control">
-                <input
-                  onChange={(event) => {
-                    handleSubject(event)
-                    setFieldIsBlank(false)
-                  }}
-                  value={subject}
-                  className="input"
-                  type="text"
-                  placeholder="e.g. Let's Connect!"
-                />
-              </div>
+              <label htmlFor="subject-field" className="label">
+                Subject
+                <div id="subject-field" className="control">
+                  <input
+                    onChange={(event) => {
+                      handleSubject(event)
+                      setFieldIsBlank(false)
+                    }}
+                    value={subject}
+                    className="input"
+                    type="text"
+                    placeholder="e.g. Let's Connect!"
+                  />
+                </div>
+              </label>
             </div>
             <div className="field">
-              <label className="label">Message</label>
-              <div className="control">
-                <textarea
-                  onChange={(event) => {
-                    handleMessage(event)
-                    setFieldIsBlank(false)
-                  }}
-                  value={message}
-                  className="textarea"
-                  placeholder="e.g. Great project idea..."
-                />
-              </div>
+              <label htmlFor="message-field" className="label">
+                Message
+                <div id="message-field" className="control">
+                  <textarea
+                    onChange={(event) => {
+                      handleMessage(event)
+                      setFieldIsBlank(false)
+                    }}
+                    value={message}
+                    className="textarea"
+                    placeholder="e.g. Great project idea..."
+                  />
+                </div>
+              </label>
             </div>
             <div className="control">
               <button onClick={handleSubmit} className="button is-link">Submit</button>
-              <button onClick={handleReset} class="button is-link is-light">Reset</button>
+              <button onClick={handleReset} className="button is-link is-light">Reset</button>
             </div>
             {fieldIsBlank && <p className='error'>All fields are required.</p>}
             </>

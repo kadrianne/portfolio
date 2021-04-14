@@ -8,7 +8,7 @@ const Nav = ({ aboutRef, projectsRef, blogsRef, contactRef, handleClick }) => {
       <li><a onClick={() => handleClick(projectsRef.current)}>projects</a></li>
       <li><a onClick={() => handleClick(blogsRef.current)}>blogs</a></li>
       <li><a onClick={() => handleClick(contactRef.current)}>contact</a></li>
-      <li><a href={resume} target='_blank'>resume</a></li>
+      <li><a href={resume} target='_blank' rel='noreferrer'>resume</a></li>
     </nav>
   )
 }

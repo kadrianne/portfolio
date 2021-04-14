@@ -39,7 +39,7 @@ const Blogs = ({ heights, addHeight, blogsRef, componentLoaded, setComponentLoad
     <>
     <section ref={blogsRef} className='blogs top-level'>
         <h2>blogs</h2>
-        <h3><a href='https://kristine-a-du.medium.com' target='_blank'><FontAwesomeIcon className='beige' icon={faMedium} size='lg' /> kristine-a-du</a></h3>
+        <h3><a href='https://kristine-a-du.medium.com' target='_blank' rel='noreferrer'><FontAwesomeIcon className='beige' icon={faMedium} size='lg' /> kristine-a-du</a></h3>
         {displayPosts()}
     </section>
     </>
